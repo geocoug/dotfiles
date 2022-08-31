@@ -104,11 +104,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -147,7 +147,7 @@ alias repo='$HOME/venvs/dev/bin/python -m create_github_repo -f $HOME/iCloud/Git
 alias dev='source $HOME/venvs/dev/bin/activate'
 alias pyenv='/opt/homebrew/opt/python@3.10/Frameworks/Python.framework/Versions/Current/bin/python3.10 -m venv .venv && source ./.venv/bin/activate && python -m pip install --no-cache-dir pre_commit flake8 black isort autoflake bandit mypy > /dev/null 2>&1 && python -m pip freeze > requirements.txt > /dev/null 2>&1 && code .'
 # DOTFILE CONFIG
-alias config='git --git-dir=/Users/cgrant/iCloud/GitHub/geocoug/dotfiles/.git --work-tree=/Users/cgrant/iCloud/GitHub/geocoug/dotfiles'
+alias config='git --git-dir=$HOME/iCloud/GitHub/geocoug/dotfiles/.git --work-tree=$HOME/iCloud/GitHub/geocoug/dotfiles'
 
 export PATH="$HOME/bin:$PATH"
 
