@@ -1,0 +1,29 @@
+# This is Git's per-user configuration file.
+[init]
+    defaultBranch = main
+[user]
+    useConfigOnly = true
+    name = Caleb Grant
+    email = geocoug@gmail.com
+    signingKey = 998748B6DFB3E489
+[core]
+    excludesfile = /Users/cgrant/.gitignore_global
+    editor = vim
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
+[mergetool "sourcetree"]
+    cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
+[commit]
+    template = /Users/cgrant/.stCommitMsg
+    gpgsign = true
+[gpg]
+    program = /opt/homebrew/bin/gpg
+[filter "lfs"]
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+[credential]
+    helper = osxkeychain
