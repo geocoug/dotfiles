@@ -30,7 +30,6 @@
   "python.linting.flake8Path": "flake8",
   "python.formatting.blackPath": "black",
   "python.linting.flake8Enabled": true,
-  "editor.experimental.stickyScroll.enabled": true,
   "window.title": "${activeEditorLong}${separator}${rootName}",
   "python.terminal.activateEnvInCurrentTerminal": true,
   "python.analysis.typeCheckingMode": "basic",
@@ -57,9 +56,11 @@
   "python.venvFolders": ["${workspaceFolder}", "/Users/cgrant/venvs"],
   "cSpell.userWords": [
     "cgrant",
+    "clparser",
     "dotfile",
     "dotfiles",
     "psycopg",
     "vimrc"
-  ]
+  ],
+  "editor.stickyScroll.enabled": true
 }

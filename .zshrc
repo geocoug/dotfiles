@@ -133,6 +133,7 @@ alias speed='speedtest-cli --simple'
 # HOMEBREW
 alias casks='brew cu -a --no-brew-update -v'
 alias brewup='brew update; brew upgrade; brew cu -a --no-brew-update; brew cleanup; brew doctor'
+alias brewun='brew uninstall --zap'
 # PATHS
 alias int='cd "$HOME/iCloud/GitHub/integral"'
 alias geo='cd "$HOME/iCloud/GitHub/geocoug"'
@@ -141,6 +142,10 @@ alias cloud='cd "$HOME/iCloud"'
 alias my='sudo chown -R `id -u`'
 # DOCKER
 # alias repo='docker run --rm -it -v $HOME/Library/CloudStorage/OneDrive-Personal/GitHub/github.txt:/app/github.txt create-repo python create_repo.py -f /app/github.txt -r'
+alias dkcu='docker compose up --build'
+alias dkcd='docker compose down --rmi local'
+alias dkr='docker run --rm -it'
+alias dke='docker exec -it'
 # PYTHON
 alias lab='docker run -it --rm -p 8888:8888 -v $(PWD):/home/jovyan jupyter-lab'
 alias repo='$HOME/venvs/dev/bin/python -m create_github_repo -f $HOME/iCloud/GitHub/github.txt'
