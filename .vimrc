@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'tpope/vim-fugitive'
+    Plug 'frazrepo/vim-rainbow'
 
 call plug#end()
 
@@ -48,16 +49,14 @@ augroup END
 
 " All other configurations go here.
 
-" let g:airline_section_b = '%{strftime("%c")}'
-" let g:airline_section_y = 'BN %{bufnr("%")}'
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline_left_sep = '>'
+" Airline configurations
 let g:airline_powerline_fonts = 1
 let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%l%#__restore__#%#__accent_bold#/%L %#__restore__#%#__accent_bold#%{g:airline_symbols.colnr}%v%#__restore__#'
 let g:airline_section_a = '%#__accent_bold#%{airline#util#wrap(airline#parts#mode(),0)}%#__restore__#%{airline#util#append(airline#parts#crypt(),0)}%{airline#util#append(airline#parts#paste(),0)}%{airline#util#append("",0)}%{airline#util#append("",0)}%{airline#util#append("",0)}%{airline#util#append(airline#parts#iminsert(),0)}'
 let g:airline_section_warning = ''
-" let g:airline_section_error = ''
-" let g:airline_section_gutter = ''
+
+" Rainbow bracket config
+let g:rainbow_active = 1
 
 " Color scheme
 
@@ -72,6 +71,12 @@ filetype plugin on
 
 " Load an indent file for the detected file type
 filetype indent on
+
+" Relative line number based on cursor position
+set relativenumber
+
+" Allow mouse click navigation
+set mouse=a
 
 " Set tab width to 4 columns
 set tabstop=4
