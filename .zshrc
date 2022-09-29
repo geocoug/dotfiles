@@ -141,16 +141,21 @@ alias cloud='cd "$HOME/iCloud"'
 # OWNERSHIP
 alias my='sudo chown -R `id -u`'
 # DOCKER
-# alias repo='docker run --rm -it -v $HOME/Library/CloudStorage/OneDrive-Personal/GitHub/github.txt:/app/github.txt create-repo python create_repo.py -f /app/github.txt -r'
 alias dkcu='docker compose up --build'
 alias dkcd='docker compose down --rmi local'
 alias dkr='docker run --rm -it'
 alias dke='docker exec -it'
 # PYTHON
+#  Open jupyter lab in the current working direcotry
 alias lab='docker run -it --rm -p 8888:8888 -v $(PWD):/home/jovyan jupyter-lab'
-alias repo='$HOME/venvs/dev/bin/python -m create_github_repo -f $HOME/iCloud/GitHub/github.txt'
+#  Activate default dev environment
 alias dev='source $HOME/venvs/dev/bin/activate'
+#  In the current directory: create and activate a Python venv, install some default packages, create a requirements.txt file and open VSCode.
 alias pyenv='/opt/homebrew/opt/python@3.10/Frameworks/Python.framework/Versions/Current/bin/python3.10 -m venv .venv && source ./.venv/bin/activate && python -m pip install --no-cache-dir pre_commit flake8 black isort autoflake bandit mypy > /dev/null 2>&1 && python -m pip freeze > requirements.txt > /dev/null 2>&1 && code .'
+#  Upgrade all site packages using PIP
+alias pipup='python -m pip list --outdated --format=freeze | grep -v "^\-e" | cut -d = -f 1 | xargs -n1 python -m pip install -U'
+#  Activate the Python venv in the current working directory. Assumes venv is called ".venv"
+alias venv='source ./.venv/bin/activate'
 # DOTFILE CONFIG
 alias config='git --git-dir=$HOME/iCloud/GitHub/geocoug/dotfiles/.git --work-tree=$HOME/iCloud/GitHub/geocoug/dotfiles'
 
