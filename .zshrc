@@ -161,6 +161,8 @@ alias config='git --git-dir=$HOME/iCloud/GitHub/geocoug/dotfiles/.git --work-tre
 
 export PATH="$HOME/bin:$PATH"
 
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
 source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
