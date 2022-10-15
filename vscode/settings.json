@@ -62,5 +62,8 @@
     "psycopg",
     "vimrc"
   ],
-  "editor.stickyScroll.enabled": true
+  "editor.stickyScroll.enabled": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
 }
