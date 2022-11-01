@@ -65,5 +65,6 @@
   "editor.stickyScroll.enabled": true,
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
-  }
+  },
+  "quarto.mathjax.theme": "dark"
 }
