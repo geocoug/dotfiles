@@ -1,0 +1,7 @@
+3 9 * * * $HOME/venvs/dev/bin/python $HOME/iCloud/GitHub/geocoug/bitcoin/btc_tracker.py
+1 9 * * * $HOME/venvs/dev/bin/python $HOME/iCloud/GitHub/geocoug/nasa-apod-dl/nasa_apod_dl.py $HOME/iCloud/GitHub/nasa.txt $HOME/Pictures/Wallpaper > /dev/null 2>&1
+9 9 * * * $HOME/bin/pg_backup.sh >> $HOME/iCloud/Backups/postgres/pg_backup.log 2>&1
+13 9 * * 5 git --git-dir=$HOME/.oh-my-zsh/.git --work-tree=$HOME/.oh-my-zsh pull > /dev/null 2>&1 && git --git-dir=$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/.git --work-tree=$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions pull > /dev/null 2>&1 && git --git-dir=$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/.git --work-tree=$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting pull > /dev/null 2>&1
+21 9 * * 5 cd $HOME/iCloud/GitHub/geocoug/dotfiles/homebrew && brew bundle dump > /dev/null 2>&1
+22 9 * * 5 crontab -l > $HOME/iCloud/GitHub/geocoug/dotfiles/cron/schedule.cron > /dev/null 2>&1
+23 9 * * 5 tldr --update > /dev/null 2>&1
