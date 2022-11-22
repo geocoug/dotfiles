@@ -113,39 +113,41 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ALIASES
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-
-# STANDARD FUNCTION MODIFICATIONS
+# Overwrite standard functions
 alias cat='ccat'
 alias l='exa -1 -g -h -l --git --group-directories-first --icons --sort=Name --time=modified'
 alias la='exa -1 -g -h -l --git --group-directories-first --icons --sort=Name --time=modified -a'
-# STANDARD FUNCTION SHORTCUTS
+# Tarball shortcuts
 alias tarup='tar czfv'
 alias tarls='tar tvf'
-# SHORTCUTS
+# Shortcuts
 alias c='clear'
 alias h='history'
 alias r='source $HOME/.zshrc'
 alias speed='speedtest-cli --simple'
-# HOMEBREW
+# Homebrew
 alias casks='brew cu -a --no-brew-update -v'
 alias brewup='brew update; brew upgrade; brew cu -a --no-brew-update; brew cleanup; brew doctor'
 alias brewun='brew uninstall --zap'
-# PATHS
+# Paths
 alias int='cd "$HOME/iCloud/GitHub/integral"'
 alias geo='cd "$HOME/iCloud/GitHub/geocoug"'
 alias cloud='cd "$HOME/iCloud"'
-# OWNERSHIP
+# Ownership
 alias my='sudo chown -R `id -u`'
-# DOCKER
+# Docker
 alias dkcu='docker compose up --build'
 alias dkcd='docker compose down --rmi local'
 alias dkr='docker run --rm -it'
 alias dke='docker exec -it'
-# PYTHON
+# Python
 #  Open jupyter lab in the current working direcotry
 alias lab='docker run -it --rm -p 8888:8888 -v $(PWD):/home/jovyan jupyter-lab'
 #  Activate default dev environment
@@ -158,6 +160,19 @@ alias pipup='python -m pip list --outdated --format=freeze | grep -v "^\-e" | cu
 alias venv='source ./.venv/bin/activate'
 # DOTFILE CONFIG
 alias config='git --git-dir=$HOME/iCloud/GitHub/geocoug/dotfiles/.git --work-tree=$HOME/iCloud/GitHub/geocoug/dotfiles'
+# Show biggest files in this directory
+alias dusize='sudo du -hs ** | sort -hr | head -10'
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# CUSTOM FUNCTIONS
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Automatically load environment variables specific to a directory tree
+function chpwd() {
+        if [ -r $PWD/.env ]; then
+                source $PWD/.env
+        fi
+}
+
 
 export PATH="$HOME/bin:$PATH"
 
