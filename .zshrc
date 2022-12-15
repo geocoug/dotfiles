@@ -137,8 +137,8 @@ alias casks='brew cu -a --no-brew-update -v'
 alias brewup='brew update; brew upgrade; brew cu -a --no-brew-update; brew cleanup; brew doctor'
 alias brewun='brew uninstall --zap'
 # Paths
-alias int='cd "$HOME/iCloud/GitHub/integral"'
-alias geo='cd "$HOME/iCloud/GitHub/geocoug"'
+alias int='cd "$HOME/GitHub/integral"'
+alias geo='cd "$HOME/GitHub/geocoug"'
 alias cloud='cd "$HOME/iCloud"'
 # Ownership
 alias my='sudo chown -R `id -u`'
@@ -159,9 +159,14 @@ alias pipup='python -m pip list --outdated --format=freeze | grep -v "^\-e" | cu
 #  Activate the Python venv in the current working directory. Assumes venv is called ".venv"
 alias venv='source ./.venv/bin/activate'
 # DOTFILE CONFIG
-alias config='git --git-dir=$HOME/iCloud/GitHub/geocoug/dotfiles/.git --work-tree=$HOME/iCloud/GitHub/geocoug/dotfiles'
+alias config='git --git-dir=$HOME/GitHub/geocoug/dotfiles/.git --work-tree=$HOME/GitHub/geocoug/dotfiles'
 # Show biggest files in this directory
 alias dusize='sudo du -hs ** | sort -hr | head -10'
+# SSH
+alias geocoug='ssh cgrant@165.232.135.224'
+alias seamod='ssh cgrant@143.110.235.194'
+alias cmat='ssh cgrant46@143.198.103.35'
+alias cstories='ssh cgrant@164.92.110.38'
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CUSTOM FUNCTIONS
@@ -172,7 +177,7 @@ function chpwd() {
                 source $PWD/.env
         fi
 }
-
+export QUARTO_PYTHON="$HOME/venvs/quarto/bin/python"
 
 export PATH="$HOME/bin:$PATH"
 
