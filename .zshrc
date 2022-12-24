@@ -177,7 +177,6 @@ function chpwd() {
                 source $PWD/.env
         fi
 }
-export QUARTO_PYTHON="$HOME/venvs/quarto/bin/python"
 
 export PATH="$HOME/bin:$PATH"
 
