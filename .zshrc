@@ -167,6 +167,8 @@ alias geocoug='ssh cgrant@165.232.135.224'
 alias seamod='ssh cgrant@143.110.235.194'
 alias cmat='ssh cgrant46@143.198.103.35'
 alias cstories='ssh cgrant@164.92.110.38'
+# Git
+alias gs='git status'
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CUSTOM FUNCTIONS
