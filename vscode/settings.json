@@ -4,11 +4,14 @@
       "source.organizeImports": true
     }
   },
-  "python.sortImports.args": ["--profile", "black"],
-  "editor.accessibilitySupport": "off",
-  "python.linting.flake8Args": [
-    "--config=${workspaceFolder}/.github/linters/.flake8"
+  "python.sortImports.args": [
+    "--profile",
+    "black"
   ],
+  "editor.accessibilitySupport": "off",
+  // "python.linting.flake8Args": [
+  //   "--config=${workspaceFolder}/.github/linters/.flake8"
+  // ],
   "workbench.iconTheme": "material-icon-theme",
   "python.terminal.activateEnvironment": true,
   "editor.scrollBeyondLastLine": false,
@@ -22,14 +25,18 @@
   "python.linting.enabled": true,
   "workbench.settings.useSplitJSON": true,
   "python.formatting.provider": "black",
-  "python.formatting.blackArgs": ["--line-length=88"],
+  "python.formatting.blackArgs": [
+    "--line-length=88"
+  ],
   "python.venvPath": "${workspaceFolder}/.venv/bin/python",
-  "python.linting.pylintArgs": ["--rcfile=${workspaceFolder}/.pylintrc"],
+  "python.linting.pylintArgs": [
+    "--rcfile=${workspaceFolder}/.pylintrc"
+  ],
   "workbench.settings.openDefaultSettings": true,
   "editor.linkedEditing": true,
-  "python.linting.flake8Path": "flake8",
+  // "python.linting.flake8Path": "flake8",
   "python.formatting.blackPath": "black",
-  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Enabled": false,
   "window.title": "${activeEditorLong}${separator}${rootName}",
   "python.terminal.activateEnvInCurrentTerminal": true,
   "python.analysis.typeCheckingMode": "basic",
@@ -44,16 +51,19 @@
     "--no-pretty",
     "--config-file=${workspaceFolder}/.github/linters/.mypy.ini"
   ],
-  "python.linting.mypyPath": "${workspaceFolder}./venv/bin/python",
+  "python.linting.mypyPath": "${workspaceFolder}/.venv/bin/python",
   "python.linting.mypyEnabled": true,
-  "python.linting.pylintEnabled": true,
+  "python.linting.pylintEnabled": false,
   "workbench.startupEditor": "none",
   "terminal.integrated.fontFamily": "'MesloLGS NF'",
-  "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort",
+  "python.sortImports.path": "${workspaceFolder}/.venv/bin/ruff",
   "editor.bracketPairColorization.enabled": true,
-  "python.defaultInterpreterPath": "../.venv/bin/python",
+  "python.defaultInterpreterPath": "./.venv/bin/python",
   "editor.minimap.enabled": false,
-  "python.venvFolders": ["${workspaceFolder}", "/Users/cgrant/venvs"],
+  "python.venvFolders": [
+    "${workspaceFolder}",
+    "$HOME/venvs"
+  ],
   "markdown.styles": [
     "https://use.fontawesome.com/releases/v6.2.1/css/all.css"
   ]
@@ -61,5 +71,9 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "quarto.mathjax.theme": "dark"
+  "quarto.mathjax.theme": "dark",
+  "ruff.path": [
+    "${workspaceFolder}/.venv/bin/ruff"
+  ],
+  "markdownlint.config": "${workspaceFolder}/.github/linters/.markdown-lint.yml"
 }

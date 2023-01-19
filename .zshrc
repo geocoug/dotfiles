@@ -104,11 +104,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='vim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -124,6 +124,7 @@ source $ZSH/oh-my-zsh.sh
 alias cat='ccat'
 alias l='exa -1 -g -h -l --git --group-directories-first --icons --sort=Name --time=modified'
 alias la='exa -1 -g -h -l --git --group-directories-first --icons --sort=Name --time=modified -a'
+alias grep='grep --color=auto'
 # Tarball shortcuts
 alias tarup='tar czfv'
 alias tarls='tar tvf'
@@ -152,8 +153,6 @@ alias dke='docker exec -it'
 alias lab='docker run -it --rm -p 8888:8888 -v $(PWD):/home/jovyan jupyter-lab'
 #  Activate default dev environment
 alias dev='source $HOME/venvs/dev/bin/activate'
-#  In the current directory: create and activate a Python venv, install some default packages, create a requirements.txt file and open VSCode.
-alias pyenv='/opt/homebrew/opt/python@3.10/Frameworks/Python.framework/Versions/Current/bin/python3.10 -m venv .venv && source ./.venv/bin/activate && python -m pip install --no-cache-dir pre_commit flake8 black isort autoflake bandit mypy > /dev/null 2>&1 && python -m pip freeze > requirements.txt > /dev/null 2>&1 && code .'
 #  Upgrade all site packages using PIP
 alias pipup='python -m pip list --outdated --format=freeze | grep -v "^\-e" | cut -d = -f 1 | xargs -n1 python -m pip install -U'
 #  Activate the Python venv in the current working directory. Assumes venv is called ".venv"
@@ -175,10 +174,48 @@ alias gs='git status'
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Automatically load environment variables specific to a directory tree
 function chpwd() {
-        if [ -r $PWD/.env ]; then
-                source $PWD/.env
-        fi
+  if [ -r $PWD/.env ]; then
+    source $PWD/.env
+  fi
 }
+
+# Print the current timestamp
+function timestamp() {
+  # TIMESTAMP=`date +'%Y-%m-%d %H:%M:%S (%Z)'`
+  TIMESTAMP=`date +'%Y-%m-%d %H:%M:%S'`
+  printf "$TIMESTAMP"
+}
+
+# In the current directory: create and activate a Python venv, 
+# install some default packages, create a requirements.txt 
+# file and open VSCode.
+function pyenv() {
+  if [ -d ".venv" ];
+  then
+    printf "[$(timestamp)] Python virtual environment already exists, activating it.%b\n" && \
+    source .venv/bin/activate && \
+    printf "[$(timestamp)] $(python -V)%b\n"
+  else
+    printf "[$(timestamp)] No Python virtual environment found, creating one.%b\n" && \
+    /opt/homebrew/bin/python3.11 -m venv .venv && \
+    source ./.venv/bin/activate && \
+    printf "[$(timestamp)] $(python -V)%b\n" && \
+    python -m pip install --upgrade pip > /dev/null 2>&1 && \
+    python -m pip install --no-cache-dir pre_commit ruff black mypy pytest > /dev/null 2>&1 && \
+    python -m pip freeze > requirements.txt && \
+    code .
+  fi
+}
+
+# Start a Python project using template files from
+# https://github.com/geocoug/python-app-template
+# and either create a Python venv or activate one if it already exists.
+function pyproj() {
+  TEMPLATE_DIR=$HOME/GitHub/geocoug/python-app-template
+  cp -r $TEMPLATE_DIR/.github $TEMPLATE_DIR/.gitignore $TEMPLATE_DIR/.pre-commit-config.yaml $TEMPLATE_DIR/LICENSE . && \
+  $(pyenv)
+}
+
 
 # Custom PATH
 export PATH="$HOME/bin:$PATH"
