@@ -172,48 +172,121 @@ alias gs='git status'
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CUSTOM FUNCTIONS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Automatically load environment variables specific to a directory tree
 function chpwd() {
-  if [ -r $PWD/.env ]; then
-    source $PWD/.env
-  fi
+# Automatically load environment variables specific to a directory tree
+    if [ -r $PWD/.env ]; 
+    then
+        source $PWD/.env
+    fi
 }
 
-# Print the current timestamp
 function timestamp() {
-  # TIMESTAMP=`date +'%Y-%m-%d %H:%M:%S (%Z)'`
-  TIMESTAMP=`date +'%Y-%m-%d %H:%M:%S'`
-  printf "$TIMESTAMP"
+    # Print the current timestamp.
+    TIMESTAMP=`date +'%Y-%m-%d %H:%M:%S'`  # (%Z)
+    printf "$TIMESTAMP"
 }
 
-# In the current directory: create and activate a Python venv, 
-# install some default packages, create a requirements.txt 
-# file and open VSCode.
 function pyenv() {
-  if [ -d ".venv" ];
-  then
-    printf "[$(timestamp)] Python virtual environment already exists, activating it.%b\n" && \
-    source .venv/bin/activate && \
-    printf "[$(timestamp)] $(python -V)%b\n"
-  else
-    printf "[$(timestamp)] No Python virtual environment found, creating one.%b\n" && \
-    /opt/homebrew/bin/python3.11 -m venv .venv && \
-    source ./.venv/bin/activate && \
-    printf "[$(timestamp)] $(python -V)%b\n" && \
-    python -m pip install --upgrade pip > /dev/null 2>&1 && \
-    python -m pip install --no-cache-dir pre_commit ruff black mypy pytest > /dev/null 2>&1 && \
-    python -m pip freeze > requirements.txt && \
-    code .
-  fi
+    # In the current directory: create and activate a Python venv, 
+    # install some default packages, create a requirements.txt 
+    # file and open VSCode.
+
+    # List of default libraries to install in a new Python venv.
+    declare -a DEFAULT_LIBRARIES=("pre_commit" "ruff" "black" "mypy" "pytest")
+
+    # Create a Python virtual environment called ".venv" if one does not exist.
+    # If creating a new venv, install $DEFAULT_LIBRARIES and export a requirements.txt file.
+    if [ -d ".venv" ];
+    then
+        printf "[$(timestamp)] Python virtual environment already exists, activating it.%b\n"
+        source .venv/bin/activate
+        printf "[$(timestamp)] $(python -V)%b\n"
+    else
+        printf "[$(timestamp)] No Python virtual environment found, creating one.%b\n"
+        /opt/homebrew/bin/python3.11 -m venv .venv
+        source ./.venv/bin/activate
+        printf "[$(timestamp)] $(python -V)%b\n"
+        python -m pip install --upgrade pip > /dev/null 2>&1
+        printf "[$(timestamp)] Installing libraries: "
+        for LIB in "${DEFAULT_LIBRARIES[@]}";
+        do
+            python -m pip install --no-cache-dir $LIB > /dev/null 2>&1
+            printf "$LIB "
+        done
+        printf "%b\n"
+        python -m pip freeze > requirements.txt
+    fi
 }
 
-# Start a Python project using template files from
-# https://github.com/geocoug/python-app-template
-# and either create a Python venv or activate one if it already exists.
 function pyproj() {
-  TEMPLATE_DIR=$HOME/GitHub/geocoug/python-app-template
-  cp -r $TEMPLATE_DIR/.github $TEMPLATE_DIR/.gitignore $TEMPLATE_DIR/.pre-commit-config.yaml $TEMPLATE_DIR/LICENSE . && \
-  $(pyenv)
+    # Start a Python project using template files from
+    # https://github.com/geocoug/python-app-template
+    # and either create a Python venv or activate one if it already exists.
+    # Optionally initialize the repository with Git.
+
+    function help() {
+        # Show help documentation.
+        printf "pyproj, $(timestamp)%b\n"
+        printf "Setup a Python project in the current directory including%b\n"
+        printf "initialization of a virtual Python environment. Optionally initialize%b\n"
+        printf "the repository with git.%b\n"
+        printf "%b\n"
+        printf "Syntax: pyproj [-g|h]%b\n"
+        printf "Options:%b\n"
+        printf "  -g    Initialize the repository with Git.%b\n"
+        printf "  -h    Print this help.%b\n"
+    }
+
+    # Number of arguments.
+    # ARGC=$#
+    # By default do not initialize Git.
+    GIT_INIT=false
+    # Template directory to copy files from for a new project.
+    TEMPLATE_DIR=$HOME/GitHub/geocoug/python-app-template
+    # Template files/dirs to copy from $TEMPLATE_DIR
+    declare -a TEMPLATE_FILES=(".github" ".gitignore" ".pre-commit-config.yaml" "LICENSE")
+
+    # Argument parser.
+    #  $# = number of function arguments.
+    if [ $# -gt 1 ]
+    then
+        help
+        printf "Unexpected arguments: "
+        for i in $*; 
+        do 
+            printf "$i " 
+        done
+        printf "%b\n"
+    else
+        case "$1" in
+            -h) help;;
+            -g) GIT_INIT=true;;
+            *) help;;
+        esac
+    fi
+
+    # If "-g" option is used, initialize the repository with Git, if it is not already.
+    if $GIT_INIT;
+    then
+        if [ ! -d ".git" ];
+        then
+            printf "[$(timestamp)] $(git init)%b\n"
+        else
+            printf "[$(timestamp)] Repository already initialized with Git, skipping.%b\n"
+        fi
+    fi
+
+    # Copy starter templates from the template directory
+    printf "[$(timestamp)] Creating starter templates: "
+    for FILE in "${TEMPLATE_FILES[@]}";
+    do
+        printf "$FILE "
+        cp -rf $TEMPLATE_DIR/$FILE .
+    done
+    printf "%b\n"
+
+    # Run pyenv() to create a Python virtual environment if one does not exist.
+    pyenv
 }
 
 
