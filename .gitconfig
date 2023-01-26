@@ -21,6 +21,8 @@
     smudge = git-lfs smudge -- %f
 [credential]
     helper = osxkeychain
+[fetch]
+    prune = true
 # Only set if large commit
 # [http]
     # postBuffer = 157286400
