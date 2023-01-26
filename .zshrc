@@ -153,8 +153,6 @@ alias dke='docker exec -it'
 alias lab='docker run -it --rm -p 8888:8888 -v $(PWD):/home/jovyan jupyter-lab'
 #  Activate default dev environment
 alias dev='source $HOME/venvs/dev/bin/activate'
-#  Upgrade all site packages using PIP
-alias pipup='python -m pip list --outdated --format=freeze | grep -v "^\-e" | cut -d = -f 1 | xargs -n1 python -m pip install -U'
 #  Activate the Python venv in the current working directory. Assumes venv is called ".venv"
 alias venv='source ./.venv/bin/activate'
 # DOTFILE CONFIG
@@ -186,13 +184,34 @@ function timestamp() {
     printf "$TIMESTAMP"
 }
 
+function pipup() {
+    # Upgrade PIP and all its site packages
+    printf "[$(timestamp)] Upgrading pip.%b\n"
+    python -m pip install --upgrade pip > /dev/null 2>&1
+    printf "[$(timestamp)] $(python -m pip -V)%b\n"
+    if [ `python -m pip list --outdated | wc -l` -ne 0 ];
+    then
+        printf "[$(timestamp)] Updating outdated packages: "
+        for LIB in $(python -m pip list --outdated | grep -v "^\-" | cut -d " " -f 1 | awk "NR>1");
+        do
+            printf "$LIB "
+            python -m pip install -U $LIB > /dev/null 2>&1
+        done
+        printf "%b\n"
+        printf "[$(timestamp)] Updating requirements.txt.%b\n"
+        python -m pip freeze > requirements.txt
+    else
+        printf "[$(timestamp)] Packages are already up to date.%b\n"
+    fi
+}
+
 function pyenv() {
-    # In the current directory: create and activate a Python venv, 
-    # install some default packages, create a requirements.txt 
-    # file and open VSCode.
+    # In the current directory: create and activate a Python venv.
+    # If a requirements.txt file already exists, install those packages,
+    # otherwise install some default packages and create a requirements.txt file.
 
     # List of default libraries to install in a new Python venv.
-    declare -a DEFAULT_LIBRARIES=("pre_commit" "ruff" "black" "mypy" "pytest")
+    declare -a DEFAULT_LIBRARIES=("pre_commit" "ruff" "black" "pytest")
 
     # Create a Python virtual environment called ".venv" if one does not exist.
     # If creating a new venv, install $DEFAULT_LIBRARIES and export a requirements.txt file.
@@ -207,14 +226,27 @@ function pyenv() {
         source ./.venv/bin/activate
         printf "[$(timestamp)] $(python -V)%b\n"
         python -m pip install --upgrade pip > /dev/null 2>&1
-        printf "[$(timestamp)] Installing libraries: "
-        for LIB in "${DEFAULT_LIBRARIES[@]}";
-        do
-            python -m pip install --no-cache-dir $LIB > /dev/null 2>&1
-            printf "$LIB "
-        done
-        printf "%b\n"
-        python -m pip freeze > requirements.txt
+
+        if [ -f "requirements.txt" ];
+        then
+            printf "[$(timestamp)] Found requirements.txt, installing libraries: "
+            for LIB in $(cat ./requirements.txt);
+            do
+                printf "$(echo $LIB | awk -F '==|>|<' '{print $1}') "
+                python -m pip install $LIB > /dev/null 2>&1
+            done
+            printf "%b\n"
+        else
+            printf "[$(timestamp)] Installing default libraries: "
+            for LIB in "${DEFAULT_LIBRARIES[@]}";
+            do
+                python -m pip install --no-cache-dir $LIB > /dev/null 2>&1
+                printf "$LIB "
+            done
+            printf "%b\n"
+            printf "[$(timestamp)] Creating requirements.txt.%b\n"
+            python -m pip freeze > requirements.txt
+        fi
     fi
 }
 
@@ -258,11 +290,14 @@ function pyproj() {
         done
         printf "%b\n"
     else
-        case "$1" in
-            -h) help;;
-            -g) GIT_INIT=true;;
-            *) help;;
-        esac
+        if [ $# -gt 0 ]
+        then
+            case "$1" in
+                -h) help;;
+                -g) GIT_INIT=true;;
+                *) help;;
+            esac
+        fi 
     fi
 
     # If "-g" option is used, initialize the repository with Git, if it is not already.
@@ -287,6 +322,9 @@ function pyproj() {
 
     # Run pyenv() to create a Python virtual environment if one does not exist.
     pyenv
+    
+    # Run pipup() to update packages
+    pipup
 }
 
 
