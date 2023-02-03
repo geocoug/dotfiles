@@ -9,9 +9,6 @@
     "black"
   ],
   "editor.accessibilitySupport": "off",
-  // "python.linting.flake8Args": [
-  //   "--config=${workspaceFolder}/.github/linters/.flake8"
-  // ],
   "workbench.iconTheme": "material-icon-theme",
   "python.terminal.activateEnvironment": true,
   "editor.scrollBeyondLastLine": false,
@@ -34,7 +31,6 @@
   ],
   "workbench.settings.openDefaultSettings": true,
   "editor.linkedEditing": true,
-  // "python.linting.flake8Path": "flake8",
   "python.formatting.blackPath": "black",
   "python.linting.flake8Enabled": false,
   "window.title": "${activeEditorLong}${separator}${rootName}",
@@ -44,15 +40,6 @@
   "python.linting.banditPath": "${workspaceFolder}/.venv/bin/bandit",
   "terminal.external.osxExec": "iTerm.app",
   "editor.tabCompletion": "on",
-  "python.linting.mypyArgs": [
-    "--follow-imports=silent",
-    "--ignore-missing-imports",
-    "--show-column-numbers",
-    "--no-pretty",
-    "--config-file=${workspaceFolder}/.github/linters/.mypy.ini"
-  ],
-  "python.linting.mypyPath": "${workspaceFolder}/.venv/bin/python",
-  "python.linting.mypyEnabled": true,
   "python.linting.pylintEnabled": false,
   "workbench.startupEditor": "none",
   "terminal.integrated.fontFamily": "'MesloLGS NF'",
@@ -75,5 +62,5 @@
   "ruff.path": [
     "${workspaceFolder}/.venv/bin/ruff"
   ],
-  "markdownlint.config": "${workspaceFolder}/.github/linters/.markdown-lint.yml"
+  "markdownlint.config": "${workspaceFolder}/.github/linters/.markdown-lint.yml",
 }

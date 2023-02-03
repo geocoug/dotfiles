@@ -26,3 +26,5 @@
 # Only set if large commit
 # [http]
     # postBuffer = 157286400
+[pull]
+	ff = only
