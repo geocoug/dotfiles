@@ -63,4 +63,5 @@
     "${workspaceFolder}/.venv/bin/ruff"
   ],
   "markdownlint.config": "${workspaceFolder}/.github/linters/.markdown-lint.yml",
+  "terminal.integrated.scrollback": 10000000
 }
