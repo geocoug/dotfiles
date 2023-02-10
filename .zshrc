@@ -135,7 +135,7 @@ alias r='source $HOME/.zshrc'
 alias speed='speedtest-cli --simple'
 # Homebrew
 alias casks='brew cu -a --no-brew-update -v'
-alias brewup='brew update; brew upgrade; brew cu -y -a --no-brew-update --include-mas --cleanup; brew cleanup; brew doctor'
+alias brewup='brew update; brew upgrade; brew cu -y -a --no-brew-update --cleanup; brew cleanup; brew doctor'
 alias brewun='brew uninstall --zap'
 # Paths
 alias int='cd "$HOME/GitHub/integral"'
