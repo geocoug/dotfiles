@@ -85,6 +85,7 @@ plugins=(
   gh
   git
   docker
+  doctl
   zsh-syntax-highlighting
   zsh-autosuggestions
   web-search
@@ -213,7 +214,7 @@ function pyenv() {
     # otherwise install some default packages and create a requirements.txt file.
 
     # List of default libraries to install in a new Python venv.
-    declare -a DEFAULT_LIBRARIES=("pre_commit" "ruff" "black" "pytest")
+    declare -a DEFAULT_LIBRARIES=("pre_commit" "ruff" "black" "pytest" "pytest-cov")
 
     # Create a Python virtual environment called ".venv" if one does not exist.
     # If creating a new venv, install $DEFAULT_LIBRARIES and export a requirements.txt file.
@@ -254,7 +255,7 @@ function pyenv() {
 
 function pyproj() {
     # Start a Python project using template files from
-    # https://github.com/geocoug/python-app-template
+    # https://github.com/geocoug/boilerplate
     # and either create a Python venv or activate one if it already exists.
     # Optionally initialize the repository with Git.
 
@@ -276,9 +277,9 @@ function pyproj() {
     # By default do not initialize Git.
     GIT_INIT=false
     # Template directory to copy files from for a new project.
-    TEMPLATE_DIR=$HOME/GitHub/geocoug/python-app-template
+    TEMPLATE_DIR=$HOME/GitHub/geocoug/boilerplate
     # Template files/dirs to copy from $TEMPLATE_DIR
-    declare -a TEMPLATE_FILES=(".github" ".gitignore" ".pre-commit-config.yaml" "LICENSE")
+    declare -a TEMPLATE_FILES=(".github" ".gitignore" ".pre-commit-config.yaml" "LICENSE" "Makefile")
 
     # Argument parser.
     #  $# = number of function arguments.
