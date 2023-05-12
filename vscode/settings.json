@@ -53,7 +53,7 @@
   ],
   "markdown.styles": [
     "https://use.fontawesome.com/releases/v6.2.1/css/all.css"
-  ]
+  ],
   "editor.stickyScroll.enabled": true,
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
