@@ -160,12 +160,6 @@ alias venv='source ./.venv/bin/activate'
 alias config='git --git-dir=$HOME/GitHub/geocoug/dotfiles/.git --work-tree=$HOME/GitHub/geocoug/dotfiles'
 # Show biggest files in this directory
 alias dusize='sudo du -hs ** | sort -hr | head -10'
-# SSH
-alias geocoug='ssh cgrant@165.232.135.224'
-alias seamod='ssh cgrant@143.110.235.194'
-alias cmat='ssh cgrant46@143.198.103.35'
-alias cstories='ssh cgrant@164.92.110.38'
-alias asv='ssh cgrant@167.99.102.213'
 # Git
 alias gs='git status'
 # Get machine IP
