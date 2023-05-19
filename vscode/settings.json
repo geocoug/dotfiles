@@ -2,7 +2,8 @@
   "[python]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
-    }
+    },
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "python.sortImports.args": [
     "--profile",
@@ -21,7 +22,7 @@
   "python.linting.lintOnSave": true,
   "python.linting.enabled": true,
   "workbench.settings.useSplitJSON": true,
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "none",
   "python.formatting.blackArgs": [
     "--line-length=88"
   ],
