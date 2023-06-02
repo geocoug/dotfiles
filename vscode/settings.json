@@ -9,6 +9,21 @@
     "--profile",
     "black"
   ],
+  "[markdown]": {
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+  // "markdownlint.config": {
+  //   "default": true,
+  //   "extends": "${workspaceFolder}/.github/linters/.markdownlint.yml"
+  // },
+  "markdownlint.lintWorkspaceGlobs": [
+    "**/*.{qmd,md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
+    "!**/bower_components",
+    "!**/node_modules",
+    "!**/vendor",
+    "!**/.git"
+  ],
   "editor.accessibilitySupport": "off",
   "workbench.iconTheme": "material-icon-theme",
   "python.terminal.activateEnvironment": true,
@@ -64,5 +79,6 @@
     "${workspaceFolder}/.venv/bin/ruff"
   ],
   "markdownlint.config": "${workspaceFolder}/.github/linters/.markdown-lint.yml",
-  "terminal.integrated.scrollback": 10000000
+  "terminal.integrated.scrollback": 10000000,
+  "workbench.editor.enablePreview": false
 }
