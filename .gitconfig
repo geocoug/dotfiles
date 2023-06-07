@@ -10,7 +10,7 @@
     excludesfile = /Users/cgrant/.gitignore_global
     editor = vim
 [commit]
-    template = /Users/cgrant/.stCommitMsg
+    # template = /Users/cgrant/.stCommitMsg
     gpgsign = true
 [gpg]
     program = /opt/homebrew/bin/gpg
