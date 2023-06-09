@@ -13,17 +13,6 @@
         "editor.formatOnPaste": true,
         "editor.formatOnSave": true
     },
-    // "markdownlint.config": {
-    //   "default": true,
-    //   "extends": "${workspaceFolder}/.github/linters/.markdownlint.yml"
-    // },
-    "markdownlint.lintWorkspaceGlobs": [
-        "**/*.{qmd,md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
-        "!**/bower_components",
-        "!**/node_modules",
-        "!**/vendor",
-        "!**/.git"
-    ],
     "editor.accessibilitySupport": "off",
     "workbench.iconTheme": "material-icon-theme",
     "python.terminal.activateEnvironment": true,
@@ -74,11 +63,18 @@
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "quarto.mathjax.theme": "dark",
     "ruff.path": [
         "${workspaceFolder}/.venv/bin/ruff"
     ],
-    "markdownlint.config": "${workspaceFolder}/.github/linters/.markdown-lint.yml",
+    "markdownlint.config": "${workspaceFolder}/.github/linters/.markdownlint.yml",
     "terminal.integrated.scrollback": 10000000,
-    "workbench.editor.enablePreview": false
+    "workbench.editor.enablePreview": false,
+    "markdownlint.lintWorkspaceGlobs": [
+        "**/*.{md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
+        "!**/bower_components",
+        "!**/node_modules",
+        "!**/vendor",
+        "!**/.git",
+        "**/*.qmd"
+    ]
 }
