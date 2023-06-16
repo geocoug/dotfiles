@@ -1,80 +1,68 @@
 {
-    "[python]": {
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true
-        },
-        "editor.defaultFormatter": "ms-python.black-formatter"
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
     },
-    "python.sortImports.args": [
-        "--profile",
-        "black"
-    ],
-    "[markdown]": {
-        "editor.formatOnPaste": true,
-        "editor.formatOnSave": true
-    },
-    "editor.accessibilitySupport": "off",
-    "workbench.iconTheme": "material-icon-theme",
-    "python.terminal.activateEnvironment": true,
-    "editor.scrollBeyondLastLine": false,
-    "explorer.confirmDelete": false,
-    "terminal.integrated.inheritEnv": false,
-    "editor.wordWrap": "on",
-    "terminal.integrated.defaultProfile.osx": "zsh",
-    "editor.formatOnSave": true,
-    "workbench.settings.editor": "json",
-    "python.linting.lintOnSave": true,
-    "python.linting.enabled": true,
-    "workbench.settings.useSplitJSON": true,
-    "python.formatting.provider": "none",
-    "python.formatting.blackArgs": [
-        "--line-length=88"
-    ],
-    "python.venvPath": "${workspaceFolder}/.venv/bin/python",
-    "python.linting.pylintArgs": [
-        "--rcfile=${workspaceFolder}/.pylintrc"
-    ],
-    "workbench.settings.openDefaultSettings": true,
-    "editor.linkedEditing": true,
-    "python.formatting.blackPath": "black",
-    "python.linting.flake8Enabled": false,
-    "window.title": "${activeEditorLong}${separator}${rootName}",
-    "python.terminal.activateEnvInCurrentTerminal": true,
-    "python.analysis.typeCheckingMode": "basic",
-    "python.linting.banditEnabled": true,
-    "python.linting.banditPath": "${workspaceFolder}/.venv/bin/bandit",
-    "terminal.external.osxExec": "iTerm.app",
-    "editor.tabCompletion": "on",
-    "python.linting.pylintEnabled": false,
-    "workbench.startupEditor": "none",
-    "terminal.integrated.fontFamily": "'MesloLGS NF'",
-    "python.sortImports.path": "${workspaceFolder}/.venv/bin/ruff",
-    "editor.bracketPairColorization.enabled": true,
-    "python.defaultInterpreterPath": "./.venv/bin/python",
-    "editor.minimap.enabled": false,
-    "python.venvFolders": [
-      "${workspaceFolder}",
-      "$HOME/venvs"
-    ],
-    "markdown.styles": [
-        "https://use.fontawesome.com/releases/v6.2.1/css/all.css"
-    ],
-    "editor.stickyScroll.enabled": true,
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "ruff.path": [
-        "${workspaceFolder}/.venv/bin/ruff"
-    ],
-    "markdownlint.config": "${workspaceFolder}/.github/linters/.markdownlint.yml",
-    "terminal.integrated.scrollback": 10000000,
-    "workbench.editor.enablePreview": false,
-    "markdownlint.lintWorkspaceGlobs": [
-        "**/*.{md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
-        "!**/bower_components",
-        "!**/node_modules",
-        "!**/vendor",
-        "!**/.git",
-        "**/*.qmd"
-    ]
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.sortImports.args": ["--profile", "black"],
+  "[markdown]": {
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+  "editor.accessibilitySupport": "off",
+  "workbench.iconTheme": "material-icon-theme",
+  "python.terminal.activateEnvironment": true,
+  "editor.scrollBeyondLastLine": false,
+  "explorer.confirmDelete": false,
+  "terminal.integrated.inheritEnv": false,
+  "editor.wordWrap": "on",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "editor.formatOnSave": true,
+  "workbench.settings.editor": "json",
+  "python.linting.lintOnSave": true,
+  "python.linting.enabled": true,
+  "workbench.settings.useSplitJSON": true,
+  "python.formatting.provider": "none",
+  "python.formatting.blackArgs": ["--line-length=88"],
+  "python.venvPath": "${workspaceFolder}/.venv/bin/python",
+  "python.linting.pylintArgs": ["--rcfile=${workspaceFolder}/.pylintrc"],
+  "workbench.settings.openDefaultSettings": true,
+  "editor.linkedEditing": true,
+  "python.formatting.blackPath": "black",
+  "python.linting.flake8Enabled": false,
+  "window.title": "${activeEditorLong}${separator}${rootName}",
+  "python.terminal.activateEnvInCurrentTerminal": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.linting.banditEnabled": true,
+  "python.linting.banditPath": "${workspaceFolder}/.venv/bin/bandit",
+  "terminal.external.osxExec": "iTerm.app",
+  "editor.tabCompletion": "on",
+  "python.linting.pylintEnabled": false,
+  "workbench.startupEditor": "none",
+  "terminal.integrated.fontFamily": "'MesloLGS NF'",
+  "python.sortImports.path": "${workspaceFolder}/.venv/bin/ruff",
+  "editor.bracketPairColorization.enabled": true,
+  "python.defaultInterpreterPath": "./.venv/bin/python",
+  "editor.minimap.enabled": false,
+  "python.venvFolders": ["${workspaceFolder}", "$HOME/venvs"],
+  "markdown.styles": [
+    "https://use.fontawesome.com/releases/v6.2.1/css/all.css"
+  ],
+  "editor.stickyScroll.enabled": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "ruff.path": ["${workspaceFolder}/.venv/bin/ruff"],
+  "markdownlint.config": "${workspaceFolder}/.github/linters/.markdownlint.yml",
+  "terminal.integrated.scrollback": 10000000,
+  "workbench.editor.enablePreview": false,
+  "markdownlint.lintWorkspaceGlobs": [
+    "**/*.{qmd,md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
+    "!**/bower_components",
+    "!**/node_modules",
+    "!**/vendor",
+    "!**/.git"
+  ],
+  "explorer.compactFolders": false
 }
