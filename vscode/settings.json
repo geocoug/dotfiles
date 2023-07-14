@@ -64,5 +64,8 @@
     "!**/vendor",
     "!**/.git"
   ],
-  "explorer.compactFolders": false
+  "explorer.compactFolders": false,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  }
 }
