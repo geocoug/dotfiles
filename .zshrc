@@ -133,7 +133,7 @@ alias tarls='tar tvf'
 alias c='clear'
 alias h='history'
 alias r='source $HOME/.zshrc'
-alias speed='speedtest-cli --simple'
+alias speed='speedtest -v'
 # Homebrew
 alias casks='brew cu -a --no-brew-update -v'
 alias brewup='brew update; brew upgrade; brew cu -y -a --no-brew-update --cleanup; brew cleanup; brew doctor'
@@ -159,7 +159,7 @@ alias venv='source ./.venv/bin/activate'
 # DOTFILE CONFIG
 alias config='git --git-dir=$HOME/GitHub/geocoug/dotfiles/.git --work-tree=$HOME/GitHub/geocoug/dotfiles'
 # Show biggest files in this directory
-alias dusize='sudo du -hs ** | sort -hr | head -10'
+alias dusize='du -hs ** | sort -hr | head -10'
 # Git
 alias gs='git status'
 # Get machine IP
@@ -271,10 +271,14 @@ function pyproj() {
     # ARGC=$#
     # By default do not initialize Git.
     GIT_INIT=false
+    
     # Template directory to copy files from for a new project.
     TEMPLATE_DIR=$HOME/GitHub/geocoug/boilerplate
     # Template files/dirs to copy from $TEMPLATE_DIR
     declare -a TEMPLATE_FILES=(".github" ".gitignore" ".pre-commit-config.yaml" "LICENSE" "Makefile")
+    
+    # GitHub action template directory to copy reusable workflows.
+    GITHUB_ACTION_DIR=$HOME/GitHub/geocoug/github-actions-templates/.github/workflows
 
     # Argument parser.
     #  $# = number of function arguments.
@@ -317,6 +321,12 @@ function pyproj() {
         cp -rf $TEMPLATE_DIR/$FILE .
     done
     printf "%b\n"
+
+    # Copy github action templates from the template directory
+    printf "[$(timestamp)] Copying reusable GitHub action templates\n"
+    WORKFLOW_DIR=./.github/workflows
+    mkdir -p $WORKFLOW_DIR
+    cp -rf $GITHUB_ACTION_DIR/call-*.yml $WORKFLOW_DIR
 
     # Run pyenv() to create a Python virtual environment if one does not exist.
     pyenv
