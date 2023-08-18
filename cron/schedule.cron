@@ -7,4 +7,3 @@
 22 9 * * 5 crontab -l > $HOME/GitHub/geocoug/dotfiles/cron/schedule.cron
 23 9 * * 5 tldr --update > /dev/null 2>&1
 26 9 * * 5 cd $HOME/GitHub/geocoug/dotfiles && git add --all && git commit --message "backup $(date +'\%Y-\%m-\%d \%H:\%M:\%S')" > /dev/null 2>&1 && git push origin main > /dev/null 2>&1
-*/15 * * * * $HOME/GitHub/geocoug/check-ucmr5/.venv/bin/python $HOME/GitHub/geocoug/check-ucmr5/check_ucmr5.py
