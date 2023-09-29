@@ -140,6 +140,7 @@ alias brewup='brew update; brew upgrade; brew cu -y -a --no-brew-update --cleanu
 alias brewun='brew uninstall --zap'
 # Paths
 alias int='cd "$HOME/GitHub/integral"'
+alias gsi='cd "$HOME/GitHub/gsi"'
 alias geo='cd "$HOME/GitHub/geocoug"'
 alias cloud='cd "$HOME/iCloud"'
 # Ownership
