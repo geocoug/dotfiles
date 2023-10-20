@@ -70,7 +70,7 @@
   },
   "hediet.vscode-drawio.resizeImages": null,
   "github.copilot.enable": {
-    "quarto": false,
+    "quarto": true,
     "*": true
   },
   "[css]": {
