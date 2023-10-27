@@ -354,3 +354,6 @@ export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 
 # Resource limit
 ulimit -n 16384
+
+# Data management bin
+export PATH="$HOME/GitHub/gsi/data-management/bin:$PATH"
