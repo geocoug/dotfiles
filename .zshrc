@@ -358,6 +358,8 @@ ulimit -n 16384
 # Data management bin
 export PATH="$HOME/GitHub/gsi/data-management/bin:$PATH"
 
+alias obsidian='cd /Users/cgrant/Library/Mobile Documents/iCloud~md~obsidian/Documents'
+
 alias dm='cd /Volumes/jobs/data-management'
 alias verizon='cd /Volumes/jobs/6651-6700/6673\ Morgan\ LewisVerizon/DataManagement/GSIDB'
 alias centredale='cd /Volumes/jobs/6151-6200/6175\ Centredale/DataManagement/GSIDB'
