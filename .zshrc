@@ -166,6 +166,8 @@ alias gs='git status'
 # Get machine IP
 alias ip='ipconfig getifaddr en0'
 
+alias python='python3'
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CUSTOM FUNCTIONS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -336,7 +338,6 @@ function pyproj() {
     pipup
 }
 
-
 # Custom PATH
 export PATH="$HOME/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
@@ -356,7 +357,7 @@ export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 ulimit -n 16384
 
 # Data management bin
-export PATH="$HOME/GitHub/gsi/data-management/bin:$PATH"
+export PATH="/Volumes/jobs/data-management/bin:$PATH"
 
 alias obsidian='cd /Users/cgrant/Library/Mobile Documents/iCloud~md~obsidian/Documents'
 
