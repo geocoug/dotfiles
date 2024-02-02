@@ -344,8 +344,6 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
 
@@ -365,3 +363,4 @@ alias dm='cd /Volumes/jobs/data-management'
 alias verizon='cd /Volumes/jobs/6651-6700/6673\ Morgan\ LewisVerizon/DataManagement/GSIDB'
 alias centredale='cd /Volumes/jobs/6151-6200/6175\ Centredale/DataManagement/GSIDB'
 alias sati='cd "/Volumes/jobs-1/6001-6050/6013 SA Terminal Island/DataManagement/GSIDB"'
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
