@@ -80,7 +80,6 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  z
   aliases
   gh
   git
@@ -356,6 +355,7 @@ ulimit -n 16384
 
 # Data management bin
 export PATH="/Volumes/jobs/data-management/bin:$PATH"
+alias dm='cd /Volumes/jobs/data-management'
 
 alias obsidian='cd /Users/cgrant/Library/Mobile Documents/iCloud~md~obsidian/Documents'
 
@@ -363,5 +363,9 @@ alias dm='cd /Volumes/jobs/data-management'
 alias verizon='cd /Volumes/jobs/6651-6700/6673\ Morgan\ LewisVerizon/DataManagement/GSIDB'
 alias centredale='cd /Volumes/jobs/6151-6200/6175\ Centredale/DataManagement/GSIDB'
 alias sati='cd "/Volumes/jobs-1/6001-6050/6013 SA Terminal Island/DataManagement/GSIDB"'
+
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+
 eval "$(gh copilot alias -- zsh)"
+
+eval "$(zoxide init --cmd cd zsh)"
