@@ -367,5 +367,3 @@ alias sati='cd "/Volumes/jobs-1/6001-6050/6013 SA Terminal Island/DataManagement
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 eval "$(gh copilot alias -- zsh)"
-
-eval "$(zoxide init --cmd cd zsh)"
