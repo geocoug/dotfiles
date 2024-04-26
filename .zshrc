@@ -277,7 +277,7 @@ function pyproj() {
     # Template directory to copy files from for a new project.
     TEMPLATE_DIR=$HOME/GitHub/geocoug/boilerplate
     # Template files/dirs to copy from $TEMPLATE_DIR
-    declare -a TEMPLATE_FILES=(".github" ".gitignore" ".pre-commit-config.yaml" "LICENSE" "Makefile")
+    declare -a TEMPLATE_FILES=(".github" ".linters" ".gitignore" ".pre-commit-config.yaml" "LICENSE" "Makefile")
     
     # GitHub action template directory to copy reusable workflows.
     GITHUB_ACTION_DIR=$HOME/GitHub/geocoug/github-actions-templates/.github/workflows
