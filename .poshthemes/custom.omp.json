@@ -12,7 +12,7 @@
                     "foreground": "#ffffff",
                     "leading_diamond": "\ue0b6",
                     "style": "diamond",
-                    "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
+                    "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} {{ .HostName }}",
                     "trailing_diamond": "\ue0b4",
                     "type": "os"
                 },
@@ -97,7 +97,7 @@
                     "properties": {
                         "time_format": "15:04:05"
                     },
-                    "template": " {{ .CurrentDate | date .Format }} "
+                    "template": "\uf017 {{ .CurrentDate | date .Format }} "
                 }
             ]
         },
