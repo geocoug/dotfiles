@@ -1,0 +1,118 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "version": 2,
+    "console_title_template": "{{ .Folder }}",
+    "blocks": [
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "segments": [
+                {
+                    "background": "#29315A",
+                    "foreground": "#ffffff",
+                    "leading_diamond": "\ue0b6",
+                    "style": "diamond",
+                    "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
+                    "trailing_diamond": "\ue0b4",
+                    "type": "os"
+                },
+                {
+                    "type": "path",
+                    "style": "diamond",
+                    "foreground": "#3EC669",
+                    "background": "#29315A",
+                    "leading_diamond": "\ue0b6",
+                    "trailing_diamond": "\ue0b4",
+                    "template": "\ue5ff {{ .Path }}",
+                    "properties": {
+                        "style": "mixed"
+                    }
+                },
+                {
+                    "type": "git",
+                    "style": "diamond",
+                    "foreground": "#43CCEA",
+                    "foreground_templates": [
+                        "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}",
+                        "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}",
+                        "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
+                        "{{ if gt .Behind 0 }}#B388FF{{ end }}"
+                    ],
+                    "background": "#29315A",
+                    "leading_diamond": " \ue0b6",
+                    "trailing_diamond": "\ue0b4",
+                    "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }}",
+                    "properties": {
+                        "branch_max_length": 25,
+                        "fetch_stash_count": true,
+                        "fetch_status": true,
+                        "fetch_upstream_icon": true
+                    }
+                },
+                {
+                    "type": "status",
+                    "style": "plain",
+                    "foreground": "#C94A16",
+                    "template": " x "
+                }
+            ]
+        },
+        {
+            "type": "prompt",
+            "alignment": "right",
+            "segments": [
+                {
+                    "type": "python",
+                    "style": "diamond",
+                    "background": "#424242",
+                    "foreground": "#E4F34A",
+                    "leading_diamond": "\ue0b6",
+                    "trailing_diamond": "\ue0b4",
+                    "properties": {
+                        "fetch_version": true
+                    },
+                    "template": "\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}"
+                },
+                {
+                    "type": "executiontime",
+                    "style": "powerline",
+                    "foreground": "#ffffff",
+                    "background": "#29315A",
+                    "invert_powerline": true,
+                    "powerline_symbol": "\ue0b2",
+                    "leading_powerline_symbol": "\ue0b6",
+                    "template": " {{ .FormattedMs }} ",
+                    "properties": {
+                        "always_enabled": true
+                    }
+                },
+                {
+                    "type": "time",
+                    "style": "diamond",
+                    "background": "#424242",
+                    "foreground": "#ffffff",
+                    "invert_powerline": true,
+                    "leading_diamond": "\ue0b2",
+                    "trailing_diamond": "\ue0b4",
+                    "properties": {
+                        "time_format": "15:04:05"
+                    },
+                    "template": " {{ .CurrentDate | date .Format }} "
+                }
+            ]
+        },
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "segments": [
+                {
+                    "type": "text",
+                    "style": "plain",
+                    "foreground": "#63F08C",
+                    "template": "➜ "
+                }
+            ],
+            "newline": true
+        }
+    ]
+}

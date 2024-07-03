@@ -3,9 +3,9 @@ export GPG_TTY=$(tty)
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -364,6 +364,10 @@ alias verizon='cd /Volumes/jobs/6651-6700/6673\ Morgan\ LewisVerizon/DataManagem
 alias centredale='cd /Volumes/jobs/6151-6200/6175\ Centredale/DataManagement/GSIDB'
 alias sati='cd "/Volumes/jobs-1/6001-6050/6013 SA Terminal Island/DataManagement/GSIDB"'
 
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+# source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+    # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/bubblesline.omp.json)"
+    eval "$(oh-my-posh init zsh --config $HOME/.poshthemes/custom.omp.json)"
+fi
 
 eval "$(gh copilot alias -- zsh)"
