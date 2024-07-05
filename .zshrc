@@ -353,21 +353,17 @@ export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 # Resource limit
 ulimit -n 16384
 
-# Data management bin
-export PATH="/Volumes/jobs/data-management/bin:$PATH"
+# Data management
 alias dm='cd /Volumes/jobs/data-management'
+export PATH="/Volumes/jobs/data-management/bin:$PATH"
 
 alias obsidian='cd /Users/cgrant/Library/Mobile Documents/iCloud~md~obsidian/Documents'
 
-alias dm='cd /Volumes/jobs/data-management'
-alias verizon='cd /Volumes/jobs/6651-6700/6673\ Morgan\ LewisVerizon/DataManagement/GSIDB'
-alias centredale='cd /Volumes/jobs/6151-6200/6175\ Centredale/DataManagement/GSIDB'
-alias sati='cd "/Volumes/jobs-1/6001-6050/6013 SA Terminal Island/DataManagement/GSIDB"'
 
 # source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-    # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/bubblesline.omp.json)"
-    eval "$(oh-my-posh init zsh --config $HOME/.poshthemes/custom.omp.json)"
+    # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/amro.omp.json)"
+    eval "$(oh-my-posh init zsh --config $HOME/.poshthemes/custom2.omp.json)"
 fi
 
 eval "$(gh copilot alias -- zsh)"
