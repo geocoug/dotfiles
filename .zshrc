@@ -6,6 +6,9 @@ export GPG_TTY=$(tty)
 # if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
+# source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -166,6 +169,10 @@ alias gs='git status'
 alias ip='ipconfig getifaddr en0'
 
 alias python='python3'
+alias obsidian='cd /Users/cgrant/Library/Mobile Documents/iCloud~md~obsidian/Documents'
+
+# Data management
+alias dm='cd /Volumes/jobs/data-management'
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CUSTOM FUNCTIONS
@@ -342,25 +349,12 @@ export PATH="$HOME/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+export PATH="/Volumes/jobs/data-management/bin:$PATH"
 
 # Resource limit
 ulimit -n 16384
 
-# Data management
-alias dm='cd /Volumes/jobs/data-management'
-export PATH="/Volumes/jobs/data-management/bin:$PATH"
-
-alias obsidian='cd /Users/cgrant/Library/Mobile Documents/iCloud~md~obsidian/Documents'
-
-
-# source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
     # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/amro.omp.json)"
     eval "$(oh-my-posh init zsh --config $HOME/.poshthemes/custom2.omp.json)"
