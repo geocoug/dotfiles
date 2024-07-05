@@ -24,8 +24,9 @@
                     "background": "#29315A",
                     "template": " {{ .Path }}",
                     "properties": {
-                        "style": "full",
-                        "folder_separator_icon": "/"
+                        "style": "mixed",
+                        "folder_separator_icon": "/",
+                        "mixed_threshold": 12
                     }
                 },
                 {
