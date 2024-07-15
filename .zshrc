@@ -87,7 +87,6 @@ plugins=(
   gh
   git
   docker
-  doctl
   zsh-syntax-highlighting
   zsh-autosuggestions
   web-search
@@ -177,8 +176,14 @@ alias dm='cd /Volumes/jobs/data-management'
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CUSTOM FUNCTIONS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function timezsh() {
+    # Time the startup of the shell.
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
+
 function chpwd() {
-# Automatically load environment variables specific to a directory tree
+    # Automatically load environment variables specific to a directory tree
     if [ -r $PWD/.env ]; 
     then
         source $PWD/.env
