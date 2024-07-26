@@ -124,8 +124,8 @@ fi
 # For a full list of active aliases, run `alias`.
 # Overwrite standard functions
 alias cat='ccat'
-alias l='eza -1 -g -h -l --git --group-directories-first --icons=auto --sort=Name --time=modified -o --total-size --time-style=long-iso'
-alias la='eza -1 -g -h -l --git --group-directories-first --icons=auto --sort=Name --time=modified -o --total-size --time-style=long-iso -a'
+alias l='eza -1 -g -h -l --git --group-directories-first --icons=auto --sort=Name --time=modified -o --time-style=long-iso'
+alias la='eza -1 -g -h -l --git --group-directories-first --icons=auto --sort=Name --time=modified -o --time-style=long-iso -a'
 alias grep='grep --color=auto'
 # Tarball shortcuts
 alias tarup='tar czfv'
