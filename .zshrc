@@ -196,34 +196,13 @@ function timestamp() {
     printf "$TIMESTAMP"
 }
 
-function pipup() {
-    # Upgrade PIP and all its site packages
-    printf "[$(timestamp)] Upgrading pip.%b\n"
-    python -m pip install --upgrade pip > /dev/null 2>&1
-    printf "[$(timestamp)] $(python -m pip -V)%b\n"
-    if [ `python -m pip list --outdated | wc -l` -ne 0 ];
-    then
-        printf "[$(timestamp)] Updating outdated packages: "
-        for LIB in $(python -m pip list --outdated | grep -v "^\-" | cut -d " " -f 1 | awk "NR>1");
-        do
-            printf "$LIB "
-            python -m pip install -U $LIB > /dev/null 2>&1
-        done
-        printf "%b\n"
-        printf "[$(timestamp)] Updating requirements.txt.%b\n"
-        python -m pip freeze > requirements.txt
-    else
-        printf "[$(timestamp)] Packages are already up to date.%b\n"
-    fi
-}
-
 function pyenv() {
     # In the current directory: create and activate a Python venv.
     # If a requirements.txt file already exists, install those packages,
     # otherwise install some default packages and create a requirements.txt file.
 
     # List of default libraries to install in a new Python venv.
-    declare -a DEFAULT_LIBRARIES=("pre_commit" "ruff" "black" "pytest" "pytest-cov")
+    declare -a DEFAULT_LIBRARIES=("pre_commit" "ruff" "pytest" "pytest-cov" "mkdocs" "mkdocs-material" "mkdocstrings" "mkdocstrings[python]" "markdown-include" "bump-my-version" "twine")
 
     # Create a Python virtual environment called ".venv" if one does not exist.
     # If creating a new venv, install $DEFAULT_LIBRARIES and export a requirements.txt file.
@@ -234,30 +213,24 @@ function pyenv() {
         printf "[$(timestamp)] $(python -V)%b\n"
     else
         printf "[$(timestamp)] No Python virtual environment found, creating one.%b\n"
-        /opt/homebrew/bin/python3.11 -m venv .venv
+        /opt/homebrew/bin/uv venv > /dev/null 2>&1
         source ./.venv/bin/activate
         printf "[$(timestamp)] $(python -V)%b\n"
-        python -m pip install --upgrade pip > /dev/null 2>&1
 
         if [ -f "requirements.txt" ];
         then
-            printf "[$(timestamp)] Found requirements.txt, installing libraries: "
-            for LIB in $(cat ./requirements.txt);
-            do
-                printf "$(echo $LIB | awk -F '==|>|<' '{print $1}') "
-                python -m pip install $LIB > /dev/null 2>&1
-            done
-            printf "%b\n"
+            printf "[$(timestamp)] Found requirements.txt, installing libraries.%b\n"
+            /opt/homebrew/bin/uv pip install -r ./requirements.txt > /dev/null 2>&1
         else
             printf "[$(timestamp)] Installing default libraries: "
             for LIB in "${DEFAULT_LIBRARIES[@]}";
             do
-                python -m pip install --no-cache-dir $LIB > /dev/null 2>&1
+                /opt/homebrew/bin/uv pip install --no-cache-dir $LIB > /dev/null 2>&1
                 printf "$LIB "
             done
             printf "%b\n"
             printf "[$(timestamp)] Creating requirements.txt.%b\n"
-            python -m pip freeze > requirements.txt
+            /opt/homebrew/bin/uv pip freeze > requirements.txt
         fi
     fi
 }
@@ -289,11 +262,8 @@ function pyproj() {
     # Template directory to copy files from for a new project.
     TEMPLATE_DIR=$HOME/GitHub/geocoug/boilerplate
     # Template files/dirs to copy from $TEMPLATE_DIR
-    declare -a TEMPLATE_FILES=(".github" ".linters" ".gitignore" ".pre-commit-config.yaml" "LICENSE" "Makefile")
+    declare -a TEMPLATE_FILES=(".github" ".gitignore" ".pre-commit-config.yaml" "LICENSE" "Makefile" "boilerplate" "docs" "tests" ".readthedocs.yaml" "Caddyfile" "docker-compose.yaml" "Dockerfile" "mkdocs.yaml" "pyproject.toml" "README.md" "requirements.txt")
     
-    # GitHub action template directory to copy reusable workflows.
-    GITHUB_ACTION_DIR=$HOME/GitHub/geocoug/github-actions-templates/.github/workflows
-
     # Argument parser.
     #  $# = number of function arguments.
     if [ $# -gt 1 ]
@@ -336,17 +306,8 @@ function pyproj() {
     done
     printf "%b\n"
 
-    # Copy github action templates from the template directory
-    printf "[$(timestamp)] Copying reusable GitHub action templates\n"
-    WORKFLOW_DIR=./.github/workflows
-    mkdir -p $WORKFLOW_DIR
-    cp -rf $GITHUB_ACTION_DIR/call-*.yml $WORKFLOW_DIR
-
     # Run pyenv() to create a Python virtual environment if one does not exist.
     pyenv
-    
-    # Run pipup() to update packages
-    pipup
 }
 
 # Custom PATH
