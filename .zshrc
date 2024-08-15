@@ -326,4 +326,4 @@ ulimit -n 16384
 #     eval "$(oh-my-posh init zsh --config $HOME/.poshthemes/custom2.omp.json)"
 # fi
 
-eval "$(gh copilot alias -- zsh)"
+# eval "$(gh copilot alias -- zsh)"
