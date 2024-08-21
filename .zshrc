@@ -262,7 +262,7 @@ function pyproj() {
     # Template directory to copy files from for a new project.
     TEMPLATE_DIR=$HOME/GitHub/geocoug/boilerplate
     # Template files/dirs to copy from $TEMPLATE_DIR
-    declare -a TEMPLATE_FILES=(".github" ".gitignore" ".pre-commit-config.yaml" "LICENSE" "Makefile" "boilerplate" "docs" "tests" ".readthedocs.yaml" "Caddyfile" "docker-compose.yaml" "Dockerfile" "mkdocs.yaml" "pyproject.toml" "README.md" "requirements.txt")
+    declare -a TEMPLATE_FILES=(".github" ".gitignore" ".pre-commit-config.yaml" "LICENSE" "Makefile" "boilerplate" "docs" "tests" "scripts" ".readthedocs.yaml" "Caddyfile" "docker-compose.yaml" "Dockerfile" "mkdocs.yaml" "pyproject.toml" "README.md" "requirements.txt")
     
     # Argument parser.
     #  $# = number of function arguments.
@@ -298,16 +298,19 @@ function pyproj() {
     fi
 
     # Copy starter templates from the template directory
-    printf "[$(timestamp)] Creating starter templates: "
+    printf "[$(timestamp)] Creating starter templates:"
     for FILE in "${TEMPLATE_FILES[@]}";
     do
-        printf "$FILE "
+        printf "\n    $FILE"
         cp -rf $TEMPLATE_DIR/$FILE .
     done
     printf "%b\n"
 
     # Run pyenv() to create a Python virtual environment if one does not exist.
     pyenv
+
+    # Open vscode
+    code .
 }
 
 # Custom PATH
