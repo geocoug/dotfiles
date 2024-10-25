@@ -320,6 +320,7 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export PATH="/Volumes/jobs/data-management/bin:$PATH"
+export PATH="$(brew --prefix)/opt/python@3.12/libexec/bin:$PATH"
 
 # Resource limit
 ulimit -n 16384
@@ -330,3 +331,5 @@ ulimit -n 16384
 # fi
 
 # eval "$(gh copilot alias -- zsh)"
+
+export LOCALSTACK_AUTH_TOKEN="ls-LuqojUmI-HakE-rOTE-vIBA-9571139669a1"
