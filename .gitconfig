@@ -28,3 +28,8 @@
     # postBuffer = 157286400
 [pull]
 	ff = only
+[safe]
+	directory = /Users/cgrant/GitHub/geocoug/actions-runner/_work/self-hosted-runner-test/self-hosted-runner-test
+	directory = /Users/cgrant/GitHub/geocoug/actions-runner/_work/self-hosted-runner-test/self-hosted-runner-test
+	directory = /Users/cgrant/GitHub/geocoug/actions-runner/_work/self-hosted-runner-test/self-hosted-runner-test
+	directory = /Users/cgrant/GitHub/geocoug/actions-runner/_work/self-hosted-runner-test/self-hosted-runner-test
