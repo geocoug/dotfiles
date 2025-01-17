@@ -335,3 +335,4 @@ ulimit -n 16384
 export LOCALSTACK_AUTH_TOKEN="ls-LuqojUmI-HakE-rOTE-vIBA-9571139669a1"
 
 alias gsi-app='ssh -i "~/.ssh/cgrant.pem" cgrant@44.244.117.190'
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
