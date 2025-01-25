@@ -9,6 +9,7 @@
 [core]
     excludesfile = /Users/cgrant/.gitignore_global
     editor = vim
+    pager = delta
 [commit]
     # template = /Users/cgrant/.stCommitMsg
     gpgsign = true
@@ -28,8 +29,12 @@
     # postBuffer = 157286400
 [pull]
 	ff = only
-[safe]
-	directory = /Users/cgrant/GitHub/geocoug/actions-runner/_work/self-hosted-runner-test/self-hosted-runner-test
-	directory = /Users/cgrant/GitHub/geocoug/actions-runner/_work/self-hosted-runner-test/self-hosted-runner-test
-	directory = /Users/cgrant/GitHub/geocoug/actions-runner/_work/self-hosted-runner-test/self-hosted-runner-test
-	directory = /Users/cgrant/GitHub/geocoug/actions-runner/_work/self-hosted-runner-test/self-hosted-runner-test
+# https://github.com/dandavison/delta?tab=readme-ov-file#installation-and-usage
+[interactive]
+    diffFilter = delta --color-only
+[delta] 
+    navigate = true
+    dark = true
+    line-numbers = true
+[merge]
+    conflictstyle = zdiff3
