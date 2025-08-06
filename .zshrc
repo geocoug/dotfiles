@@ -168,7 +168,7 @@ alias gs='git status'
 alias ip='ipconfig getifaddr en0'
 
 alias python='python3'
-alias obsidian='cd /Users/cgrant/Library/Mobile Documents/iCloud~md~obsidian/Documents'
+alias obsidian='cd "/Users/cgrant/Library/Mobile Documents/iCloud~md~obsidian/Documents"'
 
 # Data management
 alias dm='cd /Volumes/jobs/data-management'
