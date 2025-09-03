@@ -1,0 +1,1 @@
+/Volumes/jobs    -fstype=smbfs,nosuid,nodev ://USER:PASSWORD@SERVER/PATH
