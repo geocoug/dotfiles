@@ -196,122 +196,38 @@ function timestamp() {
     printf "$TIMESTAMP"
 }
 
-function pyenv() {
-    # In the current directory: create and activate a Python venv.
-    # If a requirements.txt file already exists, install those packages,
-    # otherwise install some default packages and create a requirements.txt file.
+function sleepin() {
+    # Turn off the display and sleep in X seconds.
+    # Usage: sleepin <seconds>
 
-    # List of default libraries to install in a new Python venv.
-    declare -a DEFAULT_LIBRARIES=("pre_commit" "ruff" "pytest" "pytest-cov" "mkdocs" "mkdocs-material" "mkdocstrings" "mkdocstrings[python]" "markdown-include" "bump-my-version" "twine")
+    # Catch CTRL-C and exit gracefully - don't exit the shell
+    # This allows the user to cancel the sleep command
+    # and return to the shell without putting the display to sleep.
+    trap 'echo "Sleep command cancelled"; exit 0' INT
 
-    # Create a Python virtual environment called ".venv" if one does not exist.
-    # If creating a new venv, install $DEFAULT_LIBRARIES and export a requirements.txt file.
-    if [ -d ".venv" ];
-    then
-        printf "[$(timestamp)] Python virtual environment already exists, activating it.%b\n"
-        source .venv/bin/activate
-        printf "[$(timestamp)] $(python -V)%b\n"
-    else
-        printf "[$(timestamp)] No Python virtual environment found, creating one.%b\n"
-        /opt/homebrew/bin/uv venv > /dev/null 2>&1
-        source ./.venv/bin/activate
-        printf "[$(timestamp)] $(python -V)%b\n"
-
-        if [ -f "requirements.txt" ];
-        then
-            printf "[$(timestamp)] Found requirements.txt, installing libraries.%b\n"
-            /opt/homebrew/bin/uv pip install -r ./requirements.txt > /dev/null 2>&1
-        else
-            printf "[$(timestamp)] Installing default libraries: "
-            for LIB in "${DEFAULT_LIBRARIES[@]}";
-            do
-                /opt/homebrew/bin/uv pip install --no-cache-dir $LIB > /dev/null 2>&1
-                printf "$LIB "
-            done
-            printf "%b\n"
-            printf "[$(timestamp)] Creating requirements.txt.%b\n"
-            /opt/homebrew/bin/uv pip freeze > requirements.txt
+    # Check if an argument is provided
+    if [ -z "$1" ]; then
+        echo "Usage: sleepin <seconds>"
+        return 1
+    fi
+    # Check if the argument is a valid number
+    if [ "$1" -lt 1 ]; then
+        echo "Error: seconds must be greater than 0"
+        return 1
+    fi
+    echo "Putting display to sleep in $1 seconds..."
+    # Every 60 seconds, write a message with the number of seconds left
+    for ((i=$1; i>0; i--)); do
+        if (( i % 60 == 0 )); then
+            echo "Display will sleep in $i seconds..."
         fi
-    fi
-}
-
-function pyproj() {
-    # Start a Python project using template files from
-    # https://github.com/geocoug/boilerplate
-    # and either create a Python venv or activate one if it already exists.
-    # Optionally initialize the repository with Git.
-
-    function help() {
-        # Show help documentation.
-        printf "pyproj, $(timestamp)%b\n"
-        printf "Setup a Python project in the current directory including%b\n"
-        printf "initialization of a virtual Python environment. Optionally initialize%b\n"
-        printf "the repository with git.%b\n"
-        printf "%b\n"
-        printf "Syntax: pyproj [-g|h]%b\n"
-        printf "Options:%b\n"
-        printf "  -g    Initialize the repository with Git.%b\n"
-        printf "  -h    Print this help.%b\n"
-    }
-
-    # Number of arguments.
-    # ARGC=$#
-    # By default do not initialize Git.
-    GIT_INIT=false
-    
-    # Template directory to copy files from for a new project.
-    TEMPLATE_DIR=$HOME/GitHub/geocoug/boilerplate
-    # Template files/dirs to copy from $TEMPLATE_DIR
-    declare -a TEMPLATE_FILES=(".github" ".gitignore" ".pre-commit-config.yaml" "LICENSE" "Makefile" "boilerplate" "docs" "tests" "scripts" ".readthedocs.yaml" "Caddyfile" "docker-compose.yaml" "Dockerfile" "mkdocs.yaml" "pyproject.toml" "README.md" "requirements.txt")
-    
-    # Argument parser.
-    #  $# = number of function arguments.
-    if [ $# -gt 1 ]
-    then
-        help
-        printf "Unexpected arguments: "
-        for i in $*; 
-        do 
-            printf "$i " 
-        done
-        printf "%b\n"
-    else
-        if [ $# -gt 0 ]
-        then
-            case "$1" in
-                -h) help;;
-                -g) GIT_INIT=true;;
-                *) help;;
-            esac
-        fi 
-    fi
-
-    # If "-g" option is used, initialize the repository with Git, if it is not already.
-    if $GIT_INIT;
-    then
-        if [ ! -d ".git" ];
-        then
-            printf "[$(timestamp)] $(git init)%b\n"
-        else
-            printf "[$(timestamp)] Repository already initialized with Git, skipping.%b\n"
-        fi
-    fi
-
-    # Copy starter templates from the template directory
-    printf "[$(timestamp)] Creating starter templates:"
-    for FILE in "${TEMPLATE_FILES[@]}";
-    do
-        printf "\n    $FILE"
-        cp -rf $TEMPLATE_DIR/$FILE .
+        sleep 1
     done
-    printf "%b\n"
-
-    # Run pyenv() to create a Python virtual environment if one does not exist.
-    pyenv
-
-    # Open vscode
-    code .
+    # Use pmset to put the display to sleep
+    sleep $1 && pmset displaysleepnow
 }
+
+
 
 # Custom PATH
 export PATH="$HOME/bin:$PATH"
