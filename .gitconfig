@@ -32,7 +32,7 @@
 # https://github.com/dandavison/delta?tab=readme-ov-file#installation-and-usage
 [interactive]
     diffFilter = delta --color-only
-[delta] 
+[delta]
     navigate = true
     dark = true
     line-numbers = true

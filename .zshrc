@@ -250,3 +250,8 @@ ulimit -n 16384
 
 alias gsi-app='ssh -i "~/.ssh/cgrant.pem" cgrant@44.244.117.190'
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/cgrant/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
