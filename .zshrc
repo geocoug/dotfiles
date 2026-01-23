@@ -151,6 +151,7 @@ alias dkcu='docker compose up --build'
 alias dkcd='docker compose down --rmi local'
 alias dkr='docker run --rm -it'
 alias dke='docker exec -it'
+alias dls='docker image ls --format "{{.ID}}\t{{.Size}}\t{{.Repository}}:{{.Tag}}" | sort -k 2 -h'
 # Python
 #  Open jupyter lab in the current working direcotry
 alias lab='docker run -it --rm -p 8888:8888 -v $(PWD):/home/jovyan jupyter-lab'
