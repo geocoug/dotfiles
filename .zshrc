@@ -174,6 +174,9 @@ alias obsidian='cd "/Users/cgrant/Library/Mobile Documents/iCloud~md~obsidian/Do
 # Data management
 alias dm='cd /Volumes/jobs/data-management'
 
+# Claude
+alias notes='claude --plugin-dir "/Users/cgrant/Library/Mobile Documents/iCloud~md~obsidian/Documents/.claude"'
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CUSTOM FUNCTIONS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
