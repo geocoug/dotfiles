@@ -44,3 +44,5 @@
 	st = status -sb # short status with branch
 	amend = commit --amend --no-edit # tack on changes to last commit
 	undo = reset --soft HEAD~1 # undo last commit, keep changes
+[push]
+	followTags = true
