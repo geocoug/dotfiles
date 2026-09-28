@@ -1,15 +1,5 @@
 export GPG_TTY=$(tty)
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -87,15 +77,16 @@ plugins=(
   gh
   git
   docker
-  zsh-syntax-highlighting
-  zsh-autosuggestions
   web-search
   copypath
   copyfile
   copybuffer
   macos
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -186,14 +177,6 @@ function timezsh() {
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
 
-function chpwd() {
-    # Automatically load environment variables specific to a directory tree
-    if [ -r $PWD/.env ]; 
-    then
-        source $PWD/.env
-    fi
-}
-
 function timestamp() {
     # Print the current timestamp.
     TIMESTAMP=`date +'%Y-%m-%d %H:%M:%S'`  # (%Z)
@@ -201,36 +184,20 @@ function timestamp() {
 }
 
 function sleepin() {
-    # Turn off the display and sleep in X seconds.
+    # Turn off the display after N seconds. Ctrl-C cancels.
     # Usage: sleepin <seconds>
-
-    # Catch CTRL-C and exit gracefully - don't exit the shell
-    # This allows the user to cancel the sleep command
-    # and return to the shell without putting the display to sleep.
-    trap 'echo "Sleep command cancelled"; exit 0' INT
-
-    # Check if an argument is provided
-    if [ -z "$1" ]; then
-        echo "Usage: sleepin <seconds>"
+    if [[ "$1" != <-> || "$1" -lt 1 ]]; then
+        echo "Usage: sleepin <seconds>  (whole number, 1 or more)"
         return 1
     fi
-    # Check if the argument is a valid number
-    if [ "$1" -lt 1 ]; then
-        echo "Error: seconds must be greater than 0"
-        return 1
-    fi
-    echo "Putting display to sleep in $1 seconds..."
-    # Every 60 seconds, write a message with the number of seconds left
-    for ((i=$1; i>0; i--)); do
-        if (( i % 60 == 0 )); then
-            echo "Display will sleep in $i seconds..."
-        fi
+    echo "Display will sleep in $1 seconds (Ctrl-C to cancel)..."
+    local i
+    for (( i = $1; i > 0; i-- )); do
+        (( i % 60 == 0 )) && echo "Display will sleep in $i seconds..."
         sleep 1
     done
-    # Use pmset to put the display to sleep
-    sleep $1 && pmset displaysleepnow
+    pmset displaysleepnow
 }
-
 
 
 # Custom PATH
@@ -240,17 +207,41 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export PATH="/Volumes/jobs/data-management/bin:$PATH"
-export PATH="$(brew --prefix)/opt/python@3.12/libexec/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/python@3.12/libexec/bin:$PATH"
 
 # Resource limit
 ulimit -n 16384
 
-# if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-#     # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/amro.omp.json)"
-#     eval "$(oh-my-posh init zsh --config $HOME/.poshthemes/custom2.omp.json)"
-# fi
+# Prompt
+# POSH_THEME_NAME is set by `poshtry` to test a theme; otherwise use the default.
+eval "$(oh-my-posh init zsh --config $HOME/.poshthemes/${POSH_THEME_NAME:-custom3}.omp.json)"
+
+function poshtry() {
+    # Restart this shell with a different oh-my-posh theme.
+    # Usage: poshtry <theme>   (no argument lists the themes)
+    local themes=($HOME/.poshthemes/*.omp.json(:t:r:r))
+    if [[ -z "$1" || ! -r "$HOME/.poshthemes/$1.omp.json" ]]; then
+        echo "Usage: poshtry <theme>"
+        print -l -- "  "$^themes
+        return 1
+    fi
+    POSH_THEME_NAME=$1 exec zsh
+}
+
+function poshpreview() {
+    # Print every theme in this terminal: a normal prompt, then a failed slow command.
+    local cfg
+    for cfg in $HOME/.poshthemes/*.omp.json; do
+        print -P "\n%B${cfg:t:r:r}%b"
+        oh-my-posh print primary --config $cfg \
+            --terminal-width $COLUMNS --status 0 --execution-time 120
+        echo
+        oh-my-posh print primary --config $cfg \
+            --terminal-width $COLUMNS --status 1 --execution-time 4321
+        echo
+    done
+}
 
 # eval "$(gh copilot alias -- zsh)"
 
-alias gsi-app='ssh -i "~/.ssh/cgrant.pem" cgrant@44.244.117.190'
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"

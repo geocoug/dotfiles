@@ -15,7 +15,6 @@ git clone https://github.com/geocoug/dotfiles.git \
 && ln -sf .zprofile $HOME/.zprofile \
 && ln -sf .zshrc $HOME/.zshrc \
 && ln -sf .psqlrc $HOME/.psqlrc \
-&& ln -sf .p10k.zsh $HOME/.p10k.zsh \
 && ln -sf .poshthemes $HOME/.poshthemes \
 && ln -sf .psqlrc $HOME/.psqlrc \
 && ln -sf ./vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json" \
