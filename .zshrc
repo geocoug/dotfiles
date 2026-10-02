@@ -153,7 +153,7 @@ alias venv='source ./.venv/bin/activate'
 # DOTFILE CONFIG
 alias config='git --git-dir=$HOME/GitHub/geocoug/dotfiles/.git --work-tree=$HOME/GitHub/geocoug/dotfiles'
 # Show biggest files in this directory
-alias dusize='du -hs ** | sort -hr | head -10'
+alias dusize='dust -x -r'
 # Git
 alias gs='git status'
 # Get machine IP
