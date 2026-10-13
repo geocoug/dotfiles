@@ -1,11 +1,10 @@
 tap "buo/cask-upgrade", trusted: true
 tap "esolitos/ipa"
-tap "jandedobbeleer/oh-my-posh"
+tap "jandedobbeleer/oh-my-posh", trusted: { formulae: ["oh-my-posh"] }
+tap "oven-sh/bun"
 tap "planetlabs/tap"
 tap "r-lib/rig"
-tap "romkatv/powerlevel10k"
 tap "teamookla/speedtest"
-tap "xpipe-io/tap"
 # Run your GitHub Actions locally
 brew "act"
 # Static checker for GitHub Actions workflow files
@@ -26,20 +25,24 @@ brew "libpng"
 brew "ccat"
 # Checks for bashisms in shell scripts
 brew "checkbashisms"
-# OpenAI's coding agent that runs in your terminal
-brew "codex"
 # Defines a standard way of committing rules and communicating it
 brew "commitizen"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Suite of command-line tools for converting to and working with CSV
 brew "csvkit"
+# Load/unload environment variables based on $PWD
+brew "direnv"
 # Tool for exploring each layer in a docker image
 brew "dive"
 # Pack, ship and run any application as a lightweight container
-brew "docker", link: false
+brew "docker"
 # Command-line tool for DigitalOcean
 brew "doctl"
 # Embeddable SQL OLAP Database Management System
 brew "duckdb"
+# More intuitive version of du in rust
+brew "dust"
 # Modern, maintained replacement for ls
 brew "eza"
 # Play, record, convert, and stream select audio and video codecs
@@ -80,6 +83,8 @@ brew "gitleaks"
 brew "go"
 # Smarter Dockerfile linter to validate best practices
 brew "hadolint"
+# HTTP load generator, ApacheBench (ab) replacement
+brew "hey"
 # Improved top (interactive process viewer)
 brew "htop"
 # Tools and libraries to manipulate images in select formats
@@ -108,6 +113,8 @@ brew "markdownlint-cli"
 brew "openjdk"
 # Java-based project management
 brew "maven"
+# Tools to facilitate the use of Microsoft Access databases
+brew "mdbtools"
 # Scalable distributed version control system
 brew "mercurial"
 # CLI for Mermaid library
@@ -130,8 +137,6 @@ brew "pgloader"
 brew "pinentry-mac"
 # Adds support for geographic objects to PostgreSQL
 brew "postgis"
-# Theme for zsh
-brew "powerlevel10k"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
 # Pretty, minimal and fast ZSH prompt
@@ -161,7 +166,7 @@ brew "rich-cli"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # Powerful, clean, object-oriented scripting language
-brew "ruby", link: false
+brew "ruby"
 # Rust toolchain installer
 brew "rustup"
 # Cross-platform application to monitor your network traffic
@@ -198,6 +203,8 @@ brew "yamllint"
 brew "zoxide"
 # Non-interactive ssh password auth Files
 brew "esolitos/ipa/sshpass", trusted: true
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun", trusted: true
 # Utility for working with GeoParquet.
 brew "planetlabs/tap/gpq", trusted: true
 # Ookla Speedtest
@@ -212,30 +219,25 @@ cask "alt-tab"
 cask "amazon-workspaces"
 # Private desktop AI chat application
 cask "anythingllm"
-# Two-factor authentication software
 cask "authy"
 # Compact TeX distribution as alternative to the full TeX Live / MacTeX
 cask "basictex"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
-# OpenAI's official browser with ChatGPT built in
-cask "chatgpt-atlas"
-# Automated testing of webapps for Google Chrome
-cask "chromedriver"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Terminal-based AI coding assistant
 cask "claude-code"
-# UI for creating Windows installer ISO from UUPDump
-cask "crystalfetch"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# Brings the power of Copilot coding agent directly to your terminal
+cask "copilot-cli"
 # Write, edit, and chat about your code with AI
 cask "cursor"
 # Server and cloud storage browser
 cask "cyberduck"
 # Universal database tool and SQL client
 cask "dbeaver-community"
-# Full-featured desktop app for DevDocs.io
-cask "devdocs"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
 # Developer platform
@@ -255,14 +257,16 @@ cask "inkscape"
 cask "insomnia"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-# Menu bar manager
-cask "jordanbaird-ice"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
 # Scan and remove malware, spyware, and viruses
 cask "malwarebytes"
+# AI-first productivity assistant for Microsoft 365
+cask "microsoft-365-copilot"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
+# Multi-platform web browser
+cask "microsoft-edge"
 # Spreadsheet software
 cask "microsoft-excel"
 # Email client
@@ -295,6 +299,8 @@ cask "pycharm-ce"
 cask "qgis"
 # Scientific and technical publishing system built on Pandoc
 cask "quarto"
+# Imaging utility to install operating systems to a microSD card
+cask "raspberry-pi-imager"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # The R Installation Manager
@@ -319,7 +325,6 @@ cask "vlc"
 cask "warp"
 # Video communication and virtual meeting platform
 cask "webex"
-# HTML to PDF renderer
 cask "wkhtmltopdf"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
@@ -343,8 +348,11 @@ vscode "bpruitt-goddard.mermaid-markdown-syntax-highlighting"
 vscode "cameron.vscode-pytest"
 vscode "charliermarsh.ruff"
 vscode "christian-kohler.path-intellisense"
+vscode "cweijan.dbclient-jdbc"
+vscode "cweijan.vscode-postgresql-client2"
 vscode "davidanson.vscode-markdownlint"
 vscode "dbaeumer.vscode-eslint"
+vscode "dbcode.dbcode"
 vscode "docker.docker"
 vscode "donjayamanne.githistory"
 vscode "donjayamanne.python-extension-pack"
@@ -352,13 +360,13 @@ vscode "eamodio.gitlens"
 vscode "ecmel.vscode-html-css"
 vscode "esbenp.prettier-vscode"
 vscode "formulahendry.auto-rename-tag"
-vscode "geocoug.execsql-syntax"
 vscode "github.codespaces"
 vscode "github.github-vscode-theme"
 vscode "github.remotehub"
 vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
 vscode "grapecity.gc-excelviewer"
+vscode "gsi.execsql-syntax"
 vscode "hediet.vscode-drawio"
 vscode "helgardrichard.helium-icon-theme"
 vscode "james-yu.latex-workshop"
@@ -391,9 +399,12 @@ vscode "ms-vscode.makefile-tools"
 vscode "ms-vscode.remote-explorer"
 vscode "ms-vscode.remote-repositories"
 vscode "ms-vsliveshare.vsliveshare"
+vscode "mtxr.sqltools"
+vscode "mtxr.sqltools-driver-pg"
 vscode "nefrob.vscode-just-syntax"
 vscode "njpwerner.autodocstring"
 vscode "openai.chatgpt"
+vscode "openai.codex-audio"
 vscode "pamaron.pytest-runner"
 vscode "pkief.material-icon-theme"
 vscode "quarto.quarto"
@@ -418,7 +429,14 @@ vscode "wholroyd.jinja"
 vscode "yzhang.markdown-all-in-one"
 vscode "zhuangtongfa.material-theme"
 vscode "zignd.html-css-class-completion"
+cargo "cargo-watch"
+cargo "dozer-orchestrator"
+cargo "gitu"
+cargo "mdbook"
+cargo "rustlings"
+cargo "wasm-bindgen-cli"
 uv "bump-my-version"
+uv "execsql2[lsp]"
 uv "pg-upsert[dev]"
 uv "pre-commit"
 uv "ruff"
