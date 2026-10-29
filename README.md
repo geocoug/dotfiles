@@ -28,17 +28,6 @@ git clone https://github.com/geocoug/dotfiles.git \
 
 To import or export Raycast settings: `Raycast > Settings > Advanced > Import / Export`
 
-## autofs
-
-macOS `autofs` config to mount SMB shares under `/Volumes`.
-
-Update the `auto_smb` file with your SMB share information. For example: `/Volumes/jobs    -fstype=smbfs,nosuid,nodev ://USERNAME:PASSWORD@houston-dc.gsi-pc.local/jobs`
-
-```bash
-ln -sf ./autofs/auto_master /etc/auto_master \
-&& ln -sf ./autofs/auto_smb /etc/auto_smb
-```
-
 ## Homebrew
 
 See the [docs](https://docs.brew.sh/Brew-Bundle-and-Brewfile) for more info.
