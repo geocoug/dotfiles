@@ -1,6 +1,7 @@
 tap "buo/cask-upgrade", trusted: true
 tap "esolitos/ipa"
 tap "jandedobbeleer/oh-my-posh", trusted: { formulae: ["oh-my-posh"] }
+tap "microsoft/mssql-release"
 tap "oven-sh/bun"
 tap "planetlabs/tap"
 tap "r-lib/rig"
@@ -29,6 +30,8 @@ brew "checkbashisms"
 brew "commitizen"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Suite of command-line tools for converting to and working with CSV
 brew "csvkit"
 # Load/unload environment variables based on $PWD
@@ -203,6 +206,8 @@ brew "yamllint"
 brew "zoxide"
 # Non-interactive ssh password auth Files
 brew "esolitos/ipa/sshpass", trusted: true
+# ODBC Driver for Microsoft(R) SQL Server(R)
+brew "microsoft/mssql-release/msodbcsql18", trusted: true
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun", trusted: true
 # Utility for working with GeoParquet.
@@ -213,8 +218,6 @@ brew "teamookla/speedtest/speedtest", trusted: true
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
-# Enable Windows-like alt-tab
-cask "alt-tab"
 # Cloud native persistent desktop virtualization
 cask "amazon-workspaces"
 # Private desktop AI chat application
@@ -222,6 +225,8 @@ cask "anythingllm"
 cask "authy"
 # Compact TeX distribution as alternative to the full TeX Live / MacTeX
 cask "basictex"
+# Replacement for the built-in Cmd+Tab app switcher
+cask "bettercmdtab"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
@@ -429,6 +434,10 @@ vscode "wholroyd.jinja"
 vscode "yzhang.markdown-all-in-one"
 vscode "zhuangtongfa.material-theme"
 vscode "zignd.html-css-class-completion"
+cargo "cargo-audit"
+cargo "cargo-fuzz"
+cargo "cargo-llvm-cov"
+cargo "cargo-mutants"
 cargo "cargo-watch"
 cargo "dozer-orchestrator"
 cargo "gitu"

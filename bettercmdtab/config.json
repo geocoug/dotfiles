@@ -1,0 +1,23 @@
+{
+  "$schema" : "schema.json",
+  "appExceptions" : [
+    {
+      "bundleID" : "com.apple.finder",
+      "hide" : "whenNoWindows",
+      "ignore" : "never"
+    }
+  ],
+  "applicationsOnly" : false,
+  "gridSingleRow" : true,
+  "hideMenuBarIcon" : true,
+  "layoutMode" : "windowPreview",
+  "nextScopedShortcutID" : 1,
+  "panelScalePercent" : 90,
+  "scopedShortcutList" : [
+
+  ],
+  "shortcutOverrides" : [
+
+  ],
+  "titleTruncationMode" : "tail"
+}

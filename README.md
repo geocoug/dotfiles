@@ -7,18 +7,19 @@ My dotfile configurations for MacOS.
 ```sh
 git clone https://github.com/geocoug/dotfiles.git \
 && cd dotfiles \
-&& ln -sf .bashrc $HOME/.bashrc \
-&& ln -sf .hushlogin $HOME/.hushlogin \
-&& ln -sf .gitconfig $HOME/.gitconfig \
-&& ln -sf .gitignore_global $HOME/.gitignore_global \
-&& ln -sf .vimrc $HOME/.vimrc \
-&& ln -sf .zprofile $HOME/.zprofile \
-&& ln -sf .zshrc $HOME/.zshrc \
-&& ln -sf .psqlrc $HOME/.psqlrc \
-&& ln -sf .poshthemes $HOME/.poshthemes \
-&& ln -sf .psqlrc $HOME/.psqlrc \
-&& ln -sf ./vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json" \
-&& ln -sf ./vscode/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json" \
+&& ln -sf $PWD/.bashrc $HOME/.bashrc \
+&& ln -sf $PWD/.hushlogin $HOME/.hushlogin \
+&& ln -sf $PWD/.gitconfig $HOME/.gitconfig \
+&& ln -sf $PWD/.gitignore_global $HOME/.gitignore_global \
+&& ln -sf $PWD/.vimrc $HOME/.vimrc \
+&& ln -sf $PWD/.zprofile $HOME/.zprofile \
+&& ln -sf $PWD/.zshrc $HOME/.zshrc \
+&& ln -sf $PWD/.psqlrc $HOME/.psqlrc \
+&& ln -sf $PWD/.poshthemes $HOME/.poshthemes \
+&& ln -sf $PWD/.psqlrc $HOME/.psqlrc \
+&& ln -sf $PWD/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json" \
+&& ln -sf $PWD/vscode/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json" \
+&& ln -sf $PWD/bettercmdtab/config.json "$HOME/.config/bettercmdtab/config.json" \
 && ln -sf "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents" "$HOME/Obsidian" \
 && crontab schedule.cron
 ```
