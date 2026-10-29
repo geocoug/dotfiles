@@ -34,6 +34,9 @@
     "Alpha Component" : 1,
     "Green Component" : 0.84313726425170898
   },
+  "Triggers" : [
+
+  ],
   "Show Mark Indicators" : true,
   "Mouse Reporting" : true,
   "Ansi 4 Color" : {
@@ -67,19 +70,20 @@
           "knobs" : {
             "base: priority" : 5,
             "shared text color" : {
-              "Red Component" : 0.90000000000000002,
-              "Color Space" : "sRGB",
-              "Blue Component" : 0.63,
+              "Red Component" : 0.86000317335128784,
+              "Color Space" : "P3",
+              "Blue Component" : 0.63590961694717407,
               "Alpha Component" : 1,
-              "Green Component" : 0.63
+              "Green Component" : 0.6414334774017334
             },
             "base: compression resistance" : 1
           },
           "layout advanced configuration dictionary value" : {
+            "draw separator between status bar and terminal" : false,
             "remove empty components" : false,
-            "font" : ".AppleSystemUIFont 12",
+            "auto-rainbow style" : 3,
             "algorithm" : 0,
-            "auto-rainbow style" : 3
+            "font" : ".SFNS-Regular 12"
           }
         }
       },
@@ -89,18 +93,19 @@
           "knobs" : {
             "base: priority" : 5,
             "shared text color" : {
-              "Red Component" : 0.63,
-              "Color Space" : "sRGB",
-              "Blue Component" : 0.82710000000000006,
+              "Red Component" : 0.68831604719161987,
+              "Color Space" : "P3",
+              "Blue Component" : 0.82982355356216431,
               "Alpha Component" : 1,
-              "Green Component" : 0.90000000000000002
+              "Green Component" : 0.89269793033599854
             }
           },
           "layout advanced configuration dictionary value" : {
+            "draw separator between status bar and terminal" : false,
             "remove empty components" : false,
-            "font" : ".AppleSystemUIFont 12",
+            "auto-rainbow style" : 3,
             "algorithm" : 0,
-            "auto-rainbow style" : 3
+            "font" : ".SFNS-Regular 12"
           }
         }
       },
@@ -110,27 +115,29 @@
           "knobs" : {
             "base: priority" : 5,
             "shared text color" : {
-              "Red Component" : 0.90000000000000002,
-              "Color Space" : "sRGB",
-              "Blue Component" : 0.77580000000000005,
+              "Red Component" : 0.86000508069992065,
+              "Color Space" : "P3",
+              "Blue Component" : 0.76881867647171021,
               "Alpha Component" : 1,
-              "Green Component" : 0.63
+              "Green Component" : 0.64143049716949463
             }
           },
           "layout advanced configuration dictionary value" : {
+            "draw separator between status bar and terminal" : false,
             "remove empty components" : false,
-            "font" : ".AppleSystemUIFont 12",
+            "auto-rainbow style" : 3,
             "algorithm" : 0,
-            "auto-rainbow style" : 3
+            "font" : ".SFNS-Regular 12"
           }
         }
       }
     ],
     "advanced configuration" : {
+      "draw separator between status bar and terminal" : false,
       "remove empty components" : false,
-      "font" : ".AppleSystemUIFont 12",
+      "auto-rainbow style" : 3,
       "algorithm" : 0,
-      "auto-rainbow style" : 3
+      "font" : ".AppleSystemUIFont 12"
     }
   },
   "Flashing Bell" : false,
@@ -169,16 +176,16 @@
   "Unlimited Scrollback" : true,
   "Custom Command" : "No",
   "Keyboard Map" : {
-    "0xf702-0x280000-0x7b" : {
-      "Version" : 1,
-      "Action" : 10,
-      "Text" : "b",
-      "Label" : ""
-    },
-    "0xf703-0x280000-0x7c" : {
+    "0xf703-0x280000-0x7c-0x1" : {
       "Version" : 1,
       "Action" : 10,
       "Text" : "f",
+      "Label" : ""
+    },
+    "0xf702-0x280000-0x7b-0x1" : {
+      "Version" : 1,
+      "Action" : 10,
+      "Text" : "b",
       "Label" : ""
     }
   },
@@ -268,7 +275,6 @@
   },
   "Ambiguous Double Width" : false,
   "Blur Radius" : 56.471492686170201,
-  "Cursor Type" : 2,
   "Ansi 0 Color" : {
     "Red Component" : 0.078431375324726105,
     "Color Space" : "sRGB",
@@ -276,6 +282,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.098039217293262482
   },
+  "Cursor Type" : 2,
   "Blur" : true,
   "Normal Font" : "MesloLGS-NF-Regular 16",
   "Vertical Spacing" : 1,
@@ -328,8 +335,8 @@
   },
   "Columns" : 80,
   "Visual Bell" : true,
-  "ASCII Ligatures" : false,
   "Custom Directory" : "No",
+  "ASCII Ligatures" : false,
   "Ansi 5 Color" : {
     "Red Component" : 0.752197265625,
     "Color Space" : "sRGB",
